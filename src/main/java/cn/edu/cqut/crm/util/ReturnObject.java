@@ -6,6 +6,7 @@ public class ReturnObject<T extends Object> {
     private Integer status;
     private String msg;
     private T data;
+    private Integer total;
     private Object additionContent;
 
     public Integer getStatus() {
@@ -38,6 +39,14 @@ public class ReturnObject<T extends Object> {
 
     public void setAdditionContent(Object additionContent) {
         this.additionContent = additionContent;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
     @Override

@@ -20,11 +20,16 @@ public final class ReturnUtil {
         return success(msg, o, null);
     }
 
-    public static ReturnObject<Object> success(String msg, Object o, Object additionContent) {
+    public static ReturnObject<Object> success(String msg, Object o, Integer total) {
+        return success(msg, o, total, null);
+    }
+
+    public static ReturnObject<Object> success(String msg, Object o, Integer total, Object additionContent) {
         ReturnObject<Object> object = new ReturnObject<>();
         object.setStatus(SUCCESS_CODE);
         object.setMsg(msg == null ? SUCCESS_MSG : msg);
         object.setData(o);
+        object.setTotal(total);
         object.setAdditionContent(additionContent);
         return object;
     }
@@ -41,11 +46,16 @@ public final class ReturnUtil {
         return fail(msg, o, null);
     }
 
-    public static ReturnObject<Object> fail(String msg, Object o, Object additionContent) {
+    public static ReturnObject<Object> fail(String msg, Object o, Integer total) {
+        return fail(msg, o, total, null);
+    }
+
+    public static ReturnObject<Object> fail(String msg, Object o, Integer total, Object additionContent) {
         ReturnObject<Object> object = new ReturnObject<>();
         object.setStatus(FAIL_CODE);
         object.setMsg(msg == null ? FAIL_MSG : msg);
         object.setData(o);
+        object.setTotal(total);
         object.setAdditionContent(additionContent);
         return object;
     }
