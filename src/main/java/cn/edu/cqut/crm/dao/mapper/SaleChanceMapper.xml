@@ -12,8 +12,8 @@
         <result column="chance_resource" jdbcType="CHAR" property="chanceResource"/>
         <result column="success_rate" jdbcType="DECIMAL" property="successRate"/>
         <result column="chance_description" jdbcType="VARCHAR" property="chanceDescription"/>
-        <result column="user_id" jdbcType="INTEGER" property="userId"/>
-        <result column="user_name" jdbcType="CHAR" property="userName"/>
+        <result column="creator_id" jdbcType="INTEGER" property="creatorId"/>
+        <result column="creator_name" jdbcType="CHAR" property="creatorName"/>
         <result column="create_time" jdbcType="DATE" property="createTime"/>
         <result column="belong" jdbcType="INTEGER" property="belong"/>
         <result column="dispatch_time" jdbcType="DATE" property="dispatchTime"/>

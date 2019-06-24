@@ -11,11 +11,11 @@ public class DevelopPlan {
     @JSONField(name = "chanceId")
     private Integer chanceId;
 
-    @JSONField(name = "userId")
-    private Integer userId;
+    @JSONField(name = "creatorId")
+    private Integer creatorId;
 
-    @JSONField(name = "userName")
-    private String userName;
+    @JSONField(name = "creatorName")
+    private String creatorName;
 
     @JSONField(name = "planContent")
     private String planContent;
@@ -45,20 +45,20 @@ public class DevelopPlan {
         this.chanceId = chanceId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getCreatorId() {
+        return creatorId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getCreatorName() {
+        return creatorName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public String getPlanContent() {
@@ -98,8 +98,8 @@ public class DevelopPlan {
         return "DevelopPlan{" +
                 "planId=" + planId +
                 ", chanceId=" + chanceId +
-                ", userId=" + userId +
-                ", userName='" + userName + '\'' +
+                ", creatorId=" + creatorId +
+                ", creatorName='" + creatorName + '\'' +
                 ", planContent='" + planContent + '\'' +
                 ", createTime=" + createTime +
                 ", planStatus='" + planStatus + '\'' +
