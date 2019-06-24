@@ -29,11 +29,11 @@ public class SaleChance {
     @JSONField(name = "chanceDescription")
     private String chanceDescription;
 
-    @JSONField(name = "userId")
-    private String userId;
+    @JSONField(name = "creatorId")
+    private String creatorId;
 
-    @JSONField(name = "userName")
-    private String userName;
+    @JSONField(name = "creatorName")
+    private String creatorName;
 
     @JSONField(name = "createTime")
     private Date createTime;
@@ -111,20 +111,20 @@ public class SaleChance {
         this.chanceDescription = chanceDescription;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getCreatorId() {
+        return creatorId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getCreatorName() {
+        return creatorName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public Date getCreateTime() {
@@ -170,8 +170,8 @@ public class SaleChance {
                 ", chanceResource='" + chanceResource + '\'' +
                 ", successRate=" + successRate +
                 ", chanceDescription='" + chanceDescription + '\'' +
-                ", userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
+                ", creatorId='" + creatorId + '\'' +
+                ", creatorName='" + creatorName + '\'' +
                 ", createTime=" + createTime +
                 ", belong=" + belong +
                 ", dispatchTime=" + dispatchTime +

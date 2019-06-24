@@ -12,6 +12,10 @@ public class CustomerService {
     @Autowired
     private CustomerMapper customerMapper;
 
+    /**
+     * 查询所有的客户
+     * @return 返回客户列表
+     */
     public List<Customer> getAllCustomer() {
         return customerMapper.selectAll();
     }

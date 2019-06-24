@@ -12,6 +12,10 @@ public class SaleChanceService {
     @Autowired
     private SaleChanceMapper saleChanceMapper;
 
+    /**
+     * 查询所有的销售机会
+     * @return 返回销售机会列表
+     */
     public List<SaleChance> getAllSaleChance() {
         return saleChanceMapper.selectAll();
     }

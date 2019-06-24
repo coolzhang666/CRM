@@ -1,5 +1,8 @@
 package cn.edu.cqut.crm.util;
 
+/**
+ * 消息返回工具
+ */
 public final class ReturnUtil {
     private final static int SUCCESS_CODE = 1;
     private final static String SUCCESS_MSG = "SUCCESS";
@@ -20,11 +23,11 @@ public final class ReturnUtil {
         return success(msg, o, null);
     }
 
-    public static ReturnObject<Object> success(String msg, Object o, Integer total) {
+    public static ReturnObject<Object> success(String msg, Object o, Long total) {
         return success(msg, o, total, null);
     }
 
-    public static ReturnObject<Object> success(String msg, Object o, Integer total, Object additionContent) {
+    public static ReturnObject<Object> success(String msg, Object o, Long total, Object additionContent) {
         ReturnObject<Object> object = new ReturnObject<>();
         object.setStatus(SUCCESS_CODE);
         object.setMsg(msg == null ? SUCCESS_MSG : msg);
@@ -46,11 +49,11 @@ public final class ReturnUtil {
         return fail(msg, o, null);
     }
 
-    public static ReturnObject<Object> fail(String msg, Object o, Integer total) {
+    public static ReturnObject<Object> fail(String msg, Object o, Long total) {
         return fail(msg, o, total, null);
     }
 
-    public static ReturnObject<Object> fail(String msg, Object o, Integer total, Object additionContent) {
+    public static ReturnObject<Object> fail(String msg, Object o, Long total, Object additionContent) {
         ReturnObject<Object> object = new ReturnObject<>();
         object.setStatus(FAIL_CODE);
         object.setMsg(msg == null ? FAIL_MSG : msg);

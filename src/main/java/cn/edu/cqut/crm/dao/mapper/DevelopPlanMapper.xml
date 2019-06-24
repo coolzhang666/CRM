@@ -6,8 +6,8 @@
     <resultMap id="DevelopPlanResultMap" type="cn.edu.cqut.crm.model.DevelopPlan">
         <id column="plan_id" jdbcType="INTEGER" property="planId"/>
         <result column="chance_id" jdbcType="INTEGER" property="chanceId"/>
-        <result column="user_id" jdbcType="INTEGER" property="userId"/>
-        <result column="user_name" jdbcType="INTEGER" property="userName"/>
+        <result column="creator_id" jdbcType="INTEGER" property="creatorId"/>
+        <result column="creator_name" jdbcType="INTEGER" property="creatorName"/>
         <result column="plan_content" jdbcType="VARCHAR" property="planContent"/>
         <result column="create_time" jdbcType="DATE" property="createTime"/>
         <result column="plan_status" jdbcType="CHAR" property="planStatus"/>
