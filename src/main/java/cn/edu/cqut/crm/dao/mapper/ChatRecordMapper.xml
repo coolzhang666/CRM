@@ -3,6 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.cqut.crm.dao.ChatRecordMapper">
+    <resultMap id="ChatRecordResultMap" type="cn.edu.cqut.crm.model.ChatRecord">
+        <id column="chat_id" jdbcType="INTEGER" property="chatId"/>
+        <result column="customer_id" jdbcType="INTEGER" property="customerId"/>
+        <result column="customer_name" jdbcType="CHAR" property="customerName"/>
+        <result column="deal_id" jdbcType="INTEGER" property="dealId"/>
+        <result column="deal_name" jdbcType="CHAR" property="dealName"/>
+        <result column="short_description" jdbcType="CHAR" property="shortDescription"/>
+        <result column="long_description" jdbcType="VARCHAR" property="longDescription"/>
+        <result column="create_date" jdbcType="DATE" property="createDate"/>
+        <result column="chat_address" jdbcType="VARCHAR" property="chatAddress"/>
+        <result column="more_info" jdbcType="VARCHAR" property="moreInfo"/>
+    </resultMap>
     <select id="selectAll" resultType="cn.edu.cqut.crm.model.ChatRecord">
         select * from chat_record
     </select>
