@@ -41,6 +41,7 @@ public class ReturnObject<T extends Object> {
         this.additionContent = additionContent;
     }
 
+
     public Integer getTotal() {
         return total;
     }
