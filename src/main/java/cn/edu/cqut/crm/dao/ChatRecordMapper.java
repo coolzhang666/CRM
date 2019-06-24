@@ -7,5 +7,9 @@ import java.util.List;
 
 @Repository
 public interface ChatRecordMapper {
+    /**
+     * 查询所有的交往记录
+     * @return 返回交往记录列表
+     */
     List<ChatRecord> selectAll();
 }

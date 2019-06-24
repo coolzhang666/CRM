@@ -12,6 +12,10 @@ public class ChatRecordService {
     @Autowired
     private ChatRecordMapper chatRecordMapper;
 
+    /**
+     * 查询所有的交往记录
+     * @return 返回交往记录列表
+     */
     public List<ChatRecord> getAllChatRecord() {
         return chatRecordMapper.selectAll();
     }

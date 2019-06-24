@@ -12,6 +12,10 @@ public class ContactService {
     @Autowired
     private ContactMapper contactMapper;
 
+    /**
+     * 查询所有的联系人
+     * @return 返回联系人列表
+     */
     public List<Contact> getAllContact() {
         return contactMapper.selectAll();
     }

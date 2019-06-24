@@ -12,6 +12,10 @@ public class DevelopPlanService {
     @Autowired
     private DevelopPlanMapper developPlanMapper;
 
+    /**
+     * 查询所有的开发计划
+     * @return 返回开发计划列表
+     */
     public List<DevelopPlan> getAllDevelopPlan() {
         return developPlanMapper.selectAll();
     }

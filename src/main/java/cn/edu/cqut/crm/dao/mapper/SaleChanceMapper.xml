@@ -3,7 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.cqut.crm.dao.SaleChanceMapper">
-    <select id="selectAll" resultType="cn.edu.cqut.crm.model.SaleChance">
+    <resultMap id="SaleChanceResultMap" type="cn.edu.cqut.crm.model.SaleChance">
+        <id column="chance_id" jdbcType="INTEGER" property="chanceId"/>
+        <result column="customer_name" jdbcType="CHAR" property="customerName"/>
+        <result column="customer_phone" jdbcType="CHAR" property="customerPhone"/>
+        <result column="contact_name" jdbcType="CHAR" property="contactName"/>
+        <result column="contact_phone" jdbcType="CHAR" property="contactPhone"/>
+        <result column="chance_resource" jdbcType="CHAR" property="chanceResource"/>
+        <result column="success_rate" jdbcType="DECIMAL" property="successRate"/>
+        <result column="chance_description" jdbcType="VARCHAR" property="chanceDescription"/>
+        <result column="creator_id" jdbcType="INTEGER" property="creatorId"/>
+        <result column="creator_name" jdbcType="CHAR" property="creatorName"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <result column="belong" jdbcType="INTEGER" property="belong"/>
+        <result column="dispatch_time" jdbcType="DATE" property="dispatchTime"/>
+        <result column="chance_status" jdbcType="CHAR" property="chanceStatus"/>
+    </resultMap>
+    <select id="selectAll" resultMap="SaleChanceResultMap">
         select * from sale_chance
     </select>
 </mapper>

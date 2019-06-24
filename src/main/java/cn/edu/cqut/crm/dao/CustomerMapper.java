@@ -7,5 +7,9 @@ import java.util.List;
 
 @Repository
 public interface CustomerMapper {
+    /**
+     * 查询所有的客户
+     * @return 返回客户列表
+     */
     List<Customer> selectAll();
 }

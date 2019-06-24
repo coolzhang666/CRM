@@ -3,7 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.cqut.crm.dao.ContactMapper">
-    <select id="selectAll" resultType="cn.edu.cqut.crm.model.Contact">
+    <resultMap id="ContactResultMap" type="cn.edu.cqut.crm.model.Contact">
+        <id column="contact_id" jdbcType="INTEGER" property="contactId"/>
+        <result column="customer_id" jdbcType="INTEGER" property="customerId"/>
+        <result column="contact_name" jdbcType="CHAR" property="contactName"/>
+        <result column="contact_gender" jdbcType="CHAR" property="contactGender"/>
+        <result column="contact_phone" jdbcType="CHAR" property="contactPhone"/>
+        <result column="contact_job" jdbcType="CHAR" property="contactJob"/>
+    </resultMap>
+    <select id="selectAll" resultMap="ContactResultMap">
         select * from contact
     </select>
 </mapper>
