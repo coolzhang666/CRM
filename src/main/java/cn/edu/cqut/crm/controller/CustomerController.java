@@ -33,4 +33,42 @@ public class CustomerController {
         long total = pageInfo.getTotal();
         return ReturnUtil.success("查询成功", customers, total);
     }
+
+//    @RequestMapping("/insertCustomer")
+
+    /**
+     * 客户信息增加功能
+     * @param customer 要增加客户的信息
+     * @return 增加是否成功的信息
+     */
+    @RequestMapping(value = "/customer", method = RequestMethod.POST)
+    public ReturnObject<Object> insertCustomer(Customer customer) {
+        customerService.insertCustomer(customer);
+        return ReturnUtil.success("添加成功",null);
+    }
+
+//    @RequestMapping("/customer")
+
+    /**
+     * 更新客户信息功能
+     * @param customer 要更改客户的信息
+     * @return 修改是否成功的信息
+     */
+    @RequestMapping(value = "/customer", method = RequestMethod.PUT)
+    public ReturnObject<Object> updateCustomer(Customer customer) {
+        customerService.updateCustomer(customer);
+        return ReturnUtil.success("更新成功",null);
+    }
+//    @RequestMapping("/deleteCustomer")
+
+    /**
+     * 删除客户的信息
+     * @param customer 要删除客户的信息
+     * @return 删除是否成功的信息
+     */
+    @RequestMapping(value = "/customer", method = RequestMethod.DELETE)
+    public ReturnObject<Object> deleteCustomer(Customer customer) {
+        customerService.deleteCustomer(customer);
+        return ReturnUtil.success("删除成功",null);
+    }
 }
