@@ -42,7 +42,7 @@ public class DevelopPlanController {
 
     @RequestMapping(value = "/developPlan", method = RequestMethod.PUT)
     public ReturnObject<Object> updateDevelopPlan(DevelopPlan developPlan) {
-        System.out.println(developPlan);
-        return ReturnUtil.success("啦啦啦", null);
+        developPlanService.updateDevelopPlan(developPlan);
+        return ReturnUtil.success("更新成功", null);
     }
 }

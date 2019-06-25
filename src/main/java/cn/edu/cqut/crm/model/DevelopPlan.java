@@ -21,7 +21,7 @@ public class DevelopPlan {
     @JSONField(name = "planContent")
     private String planContent;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+//    @JsonFormat(pattern = "yyyy-MM-dd")
     @JSONField(name = "createTime")
     private Date createTime;
 
