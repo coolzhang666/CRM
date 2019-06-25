@@ -20,4 +20,22 @@
     <select id="selectAll" resultMap="CustomerResultMap">
         select * from customer
     </select>
+    <insert id="insertCustomer" parameterType="cn.edu.cqut.crm.model.Customer">
+       insert customer(customer_no,customer_name,customer_email,customer_grade,customer_phone,customer_credit,
+       customer_region,customer_status,customer_address,customer_cooperation)
+       values(#{customerNo},#{customerName},#{customerEmail},#{customerGrade},#{customerPhone},#{customerCredit},
+       #{customerRegion},#{customerStatus},#{customerAddress},#{customerCooperation})
+    </insert>
+
+    <update id="updateCustomer" parameterType="cn.edu.cqut.crm.model.Customer">
+        update customer set customer_no=#{customerNo},customer_name=#{customerName},customer_email=#{customerEmail},
+        customer_grade=#{customerGrade},customer_phone=#{customerPhone},customer_credit=#{customerCredit},
+       customer_region=#{customerRegion},customer_address=#{customerAddress},
+       customer_cooperation=#{customerCooperation}
+       where customer_id=#{customerId}
+    </update>
+
+    <delete id="deleteCustomer" parameterType="cn.edu.cqut.crm.model.Customer">
+        delete from customer where customer_id=#{customerId}
+    </delete>
 </mapper>

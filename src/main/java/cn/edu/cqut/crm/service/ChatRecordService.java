@@ -19,4 +19,20 @@ public class ChatRecordService {
     public List<ChatRecord> getAllChatRecord() {
         return chatRecordMapper.selectAll();
     }
+
+    public List<ChatRecord> getChatRecord(Integer cusId){
+        return chatRecordMapper.getMsg(cusId);
+    }
+
+    public void removeChatRecord(Integer chat_id){
+        chatRecordMapper.remove(chat_id);
+    }
+
+    public void updateChatRecord(ChatRecord chatRecord){
+        chatRecordMapper.update(chatRecord);
+    }
+
+    public void insertChatRecord(Integer chat_id){
+        chatRecordMapper.insert(chat_id);
+    }
 }
