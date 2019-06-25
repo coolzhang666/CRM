@@ -15,7 +15,35 @@
         <result column="chat_address" jdbcType="VARCHAR" property="chatAddress"/>
         <result column="more_info" jdbcType="VARCHAR" property="moreInfo"/>
     </resultMap>
-    <select id="selectAll" resultType="cn.edu.cqut.crm.model.ChatRecord">
+    <select id="selectAll" resultMap="ChatRecordResultMap">
         select * from chat_record
     </select>
+
+    <select id="getMsg" resultMap="ChatRecordResultMap">
+        select * from chat_record where customer_id=#{cusId}
+    </select>
+
+
+    <delete id="remove" parameterType="cn.edu.cqut.crm.model.ChatRecord">
+        delete from chat_record where chat_id=#{chat_id}
+    </delete>
+
+    <update id="update" parameterType="cn.edu.cqut.crm.model.ChatRecord">
+        update chat_record
+        set customer_name=#{customerName},
+        handler_name=#{handlerName},
+        short_description=#{shortDescription},
+        long_description=#{longDescription},
+        create_time=#{createTime},
+        chat_address=#{chatAddress},
+        more_info=#{moreInfo}
+    </update>
+
+    <insert id="insert" parameterType="cn.edu.cqut.crm.model.ChatRecord">
+        insert into
+        chat_record(customer_id,customer_name,handler_id,handler_name,short_description,long_description,
+        create_date,chat_address,more_info)
+        values (#{customer_id},#{customer_name},#{handler_id},#{handler_name},#{short_description},#{long_description},
+        #{create_date},#{chat_address},#{more_info})
+    </insert>
 </mapper>

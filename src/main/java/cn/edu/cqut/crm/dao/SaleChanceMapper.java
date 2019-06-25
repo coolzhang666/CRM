@@ -12,4 +12,10 @@ public interface SaleChanceMapper {
      * @return 返回销售机会列表
      */
     List<SaleChance> selectAll();
+
+    void insert(SaleChance saleChance);
+
+    void delete(Integer chanceid);
+
+    void update(SaleChance saleChance);
 }
