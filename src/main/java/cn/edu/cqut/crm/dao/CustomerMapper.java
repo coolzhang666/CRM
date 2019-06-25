@@ -12,4 +12,22 @@ public interface CustomerMapper {
      * @return 返回客户列表
      */
     List<Customer> selectAll();
+
+    /**
+     * 增加用户
+     * @param customer 增加用户的信息
+     */
+    void insertCustomer(Customer customer);
+
+    /**
+     * 更新用户信息
+     * @param customer 要更新用户的信息
+     */
+    void updateCustomer(Customer customer);
+
+    /**
+     * 删除指定用户
+     * @param customer 删除用户的信息
+     */
+    void deleteCustomer(Customer customer);
 }

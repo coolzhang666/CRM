@@ -12,4 +12,8 @@ public interface ChatRecordMapper {
      * @return 返回交往记录列表
      */
     List<ChatRecord> selectAll();
+    List<ChatRecord> getMsg(Integer cusId);
+    void update(ChatRecord chatRecord);
+    void remove(Integer chat_id);
+    void insert(Integer chat_id);
 }

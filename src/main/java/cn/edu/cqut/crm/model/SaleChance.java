@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
+
 public class SaleChance {
     @JSONField(name = "chanceId")
     private Integer chanceId;
