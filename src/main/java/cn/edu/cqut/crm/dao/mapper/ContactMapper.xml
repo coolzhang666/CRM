@@ -14,4 +14,15 @@
     <select id="selectAll" resultMap="ContactResultMap">
         select * from contact
     </select>
+    <insert id="insertContact" parameterType="cn.edu.cqut.crm.model.Contact">
+        insert into contact(customer_id,contact_name,contact_gender,contact_phone,contact_job)
+        value (#{customerId},#{contactName},#{contactGender},#{contactPhone},#{contactJob})
+    </insert>
+    <update id="updateContact" parameterType="cn.edu.cqut.crm.model.Contact">
+        update contact set contact_name=#{contactName},contact_gender=#{contactGender},
+        contact_phone=#{contactPhone},contact_job=#{contactJob} where contact_id=#{contactId}
+    </update>
+    <delete id="deleteContact" parameterType="cn.edu.cqut.crm.model.Contact">
+        delete from contact where contact_id=#{contactId}
+    </delete>
 </mapper>
