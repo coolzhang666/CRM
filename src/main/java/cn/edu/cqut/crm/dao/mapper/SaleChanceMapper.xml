@@ -22,4 +22,30 @@
     <select id="selectAll" resultMap="SaleChanceResultMap">
         select * from sale_chance
     </select>
+    <insert id="insert" parameterType="cn.edu.cqut.crm.model.SaleChance">
+        insert into sale_chance(customer_name,customer_phone,contact_name,
+        contact_phone,chance_resource,success_rate,chance_description,creator_id,creator_name,
+        create_time,belong,dispatch_time,chance_status)
+		values(#{customerName},#{customerPhone},#{contactName},
+		#{contactPhone},#{chanceResource},#{successRate},#{chanceDescription},
+		#{creatorId},#{creatorName},#{createTime},#{belong},#{dispatchTime},#{chanceStatus})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from sale_chance where chance_id = #{chanceid}
+    </delete>
+
+<!--    <update id="update" parameterType="cqutcrm1.model.Sellinfo">-->
+<!--			update sellinfo set sellNo=#{sellNo},cusName=#{cusName},cusPhone=#{cusPhone},-->
+<!--			itemName=#{itemName},itemPrice=#{itemPrice},sellRegion=#{sellRegion},sellNum=#{sellNum},-->
+<!--			selldate=#{selldate} where sellId=#{sellId}-->
+<!--	</update>-->
+    <update id="update" parameterType="cn.edu.cqut.crm.model.SaleChance">
+        update sale_chance set customer_name=#{customerName},customer_phone=#{customerPhone},
+        contact_name=#{contactName},contact_phone=#{contactPhone},chance_resource=#{chanceResource},
+        success_rate=#{successRate},chance_description=#{chanceDescription},creator_id=#{creatorId},
+        creator_name=#{creatorName},create_time=#{createTime},belong=#{belong},dispatch_time=#{dispatchTime},
+        chance_status=#{chanceStatus} where chance_id=#{chanceId}
+    </update>
+
 </mapper>

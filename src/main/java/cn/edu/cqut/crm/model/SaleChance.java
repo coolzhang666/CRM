@@ -1,8 +1,10 @@
 package cn.edu.cqut.crm.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+
 
 public class SaleChance {
     @JSONField(name = "chanceId")
@@ -35,12 +37,14 @@ public class SaleChance {
     @JSONField(name = "creatorName")
     private String creatorName;
 
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField(name = "createTime")
     private Date createTime;
 
     @JSONField(name = "belong")
     private Integer belong;
 
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField(name = "dispatchTime")
     private Date dispatchTime;
 
