@@ -16,4 +16,17 @@
     <select id="selectAll" resultMap="DevelopPlanResultMap">
         select * from develop_plan
     </select>
+
+    <select id="selectByChanceId" resultMap="DevelopPlanResultMap" parameterType="java.lang.Integer">
+        select * from develop_plan where chance_id = #{chanceId}
+    </select>
+
+    <insert id="insert" parameterType="cn.edu.cqut.crm.model.DevelopPlan">
+        insert into develop_plan(chance_id, creator_id, creator_name, plan_content, create_time, plan_status)
+        values(#{chanceId}, #{creatorId}, #{creatorName}, #{planContent}, #{createTime}, #{planStatus})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from develop_plan where plan_id = #{planId}
+    </delete>
 </mapper>

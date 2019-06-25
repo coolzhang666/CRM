@@ -12,4 +12,14 @@ public interface ContactMapper {
      * @return 返回联系人列表
      */
     List<Contact> selectAll();
+
+    /**
+     * 新增客户联系人
+     * @param contact
+     */
+    void insertContact(Contact contact);
+
+    void updateContact(Contact contact);
+
+    void deleteContact(Contact contact);
 }
