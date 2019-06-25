@@ -14,11 +14,11 @@ public class ChatRecord {
     @JSONField(name = "customerName")
     private String customerName;
 
-    @JSONField(name = "dealId")
-    private Integer dealId;
+    @JSONField(name = "handlerId")
+    private Integer handlerId;
 
-    @JSONField(name = "dealName")
-    private String dealName;
+    @JSONField(name = "handlerName")
+    private String handlerName;
 
     @JSONField(name = "shortDescription")
     private String shortDescription;
@@ -26,8 +26,8 @@ public class ChatRecord {
     @JSONField(name = "longDescription")
     private String longDescription;
 
-    @JSONField(name = "createDate")
-    private Date createDate;
+    @JSONField(name = "createTime")
+    private Date createTime;
 
     @JSONField(name = "chatAddress")
     private String chatAddress;
@@ -59,20 +59,20 @@ public class ChatRecord {
         this.customerName = customerName;
     }
 
-    public Integer getDealId() {
-        return dealId;
+    public Integer getHandlerId() {
+        return handlerId;
     }
 
-    public void setDealId(Integer dealId) {
-        this.dealId = dealId;
+    public void setHandlerId(Integer handlerId) {
+        this.handlerId = handlerId;
     }
 
-    public String getDealName() {
-        return dealName;
+    public String getHandlerName() {
+        return handlerName;
     }
 
-    public void setDealName(String dealName) {
-        this.dealName = dealName;
+    public void setHandlerName(String handlerName) {
+        this.handlerName = handlerName;
     }
 
     public String getShortDescription() {
@@ -91,12 +91,12 @@ public class ChatRecord {
         this.longDescription = longDescription;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getChatAddress() {
@@ -121,11 +121,11 @@ public class ChatRecord {
                 "chatId=" + chatId +
                 ", customerId=" + customerId +
                 ", customerName='" + customerName + '\'' +
-                ", dealId=" + dealId +
-                ", dealName='" + dealName + '\'' +
+                ", handlerId=" + handlerId +
+                ", handlerName='" + handlerName + '\'' +
                 ", shortDescription='" + shortDescription + '\'' +
                 ", longDescription='" + longDescription + '\'' +
-                ", createDate=" + createDate +
+                ", createTime=" + createTime +
                 ", chatAddress='" + chatAddress + '\'' +
                 ", moreInfo='" + moreInfo + '\'' +
                 '}';

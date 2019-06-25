@@ -2,11 +2,15 @@ package cn.edu.cqut.crm.util;
 
 import com.alibaba.fastjson.JSON;
 
+/**
+ * 返回消息类
+ * @param <T> 数据类型
+ */
 public class ReturnObject<T extends Object> {
     private Integer status;
     private String msg;
     private T data;
-    private Integer total;
+    private Long total;
     private Object additionContent;
 
     public Integer getStatus() {
@@ -41,11 +45,11 @@ public class ReturnObject<T extends Object> {
         this.additionContent = additionContent;
     }
 
-    public Integer getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 

@@ -7,11 +7,11 @@
         <id column="chat_id" jdbcType="INTEGER" property="chatId"/>
         <result column="customer_id" jdbcType="INTEGER" property="customerId"/>
         <result column="customer_name" jdbcType="CHAR" property="customerName"/>
-        <result column="deal_id" jdbcType="INTEGER" property="dealId"/>
-        <result column="deal_name" jdbcType="CHAR" property="dealName"/>
+        <result column="handler_id" jdbcType="INTEGER" property="handlerId"/>
+        <result column="handler_name" jdbcType="CHAR" property="handlerName"/>
         <result column="short_description" jdbcType="CHAR" property="shortDescription"/>
         <result column="long_description" jdbcType="VARCHAR" property="longDescription"/>
-        <result column="create_date" jdbcType="DATE" property="createDate"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
         <result column="chat_address" jdbcType="VARCHAR" property="chatAddress"/>
         <result column="more_info" jdbcType="VARCHAR" property="moreInfo"/>
     </resultMap>
