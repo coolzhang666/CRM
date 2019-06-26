@@ -34,6 +34,36 @@ public class CustomerController {
         return ReturnUtil.success("查询成功", customers, total);
     }
 
+
+    /**
+     *
+     * @return 返回一个为进行分页处理的客户列表
+     */
+    @RequestMapping(value = "/customer",method = RequestMethod.GET)
+    public ReturnObject<Object> listCustomer(){
+        return ReturnUtil.success(customerService.getAllCustomer());
+    }
+
+    /**
+     *
+     * @param No 参数为用户编号
+     * @return 返回这个编号的用户
+     */
+    @RequestMapping(value = "/customer/No/{No}",method = RequestMethod.GET)
+    public ReturnObject<Object> getCusNo(@PathVariable() String No){
+        return ReturnUtil.success(customerService.listNo(No));
+    }
+
+    /**
+     *
+     * @param Id 参数为用户Id
+     * @return 返回这个Id的用户信息
+     */
+    @RequestMapping(value = "/customer/Id/{Id}",method = RequestMethod.GET)
+    public ReturnObject<Object> getCusId(@PathVariable() Integer Id){
+        return ReturnUtil.success(customerService.listId(Id));
+    }
+
 //    @RequestMapping("/insertCustomer")
 
     /**

@@ -9,4 +9,6 @@ import java.util.List;
 public interface ServiceMapper {
 
     List<Service> selectAll();
+
+    void insert(Service service);
 }

@@ -31,5 +31,17 @@ public interface CustomerMapper {
      */
     void deleteCustomer(Customer customer);
 
+    /**
+     *
+     * @param Id 返回匹配的id
+     */
+    List<Customer> selectId(Integer Id);
+
+    /**
+     *
+     * @param No 返回匹配的No
+     */
+    List<Customer> selectNo(String No);
+
     Integer insertByName(Customer customer);
 }

@@ -14,4 +14,12 @@ public class ServiceService {
     public List<Service> getAllService() {
         return serviceMapper.selectAll();
     }
+
+    public void insertService(Service service){
+        serviceMapper.insert(service);
+    }
+
+
+
+
 }
