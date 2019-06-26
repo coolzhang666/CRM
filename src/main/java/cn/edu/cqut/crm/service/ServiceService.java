@@ -22,4 +22,13 @@ public class ServiceService {
     public void editService(Service service) {
         serviceMapper.updateBelong(service);
     }
+
+    public List<Service> getHandleService(int handlerId) {
+        String serviceStatus = "已分配";
+       return serviceMapper.getHandleService(handlerId,serviceStatus);
+    }
+    
+    public void insertService(Service service){
+        serviceMapper.insert(service);
+    }
 }

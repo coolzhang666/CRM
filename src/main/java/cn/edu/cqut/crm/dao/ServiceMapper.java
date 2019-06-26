@@ -15,4 +15,10 @@ public interface ServiceMapper {
     List<Service> selectAll();
 
     void updateBelong(Service service);
+  
+    List<Service> getHandleService(int handlerId,String serviceStatus);
+
+    void changeServiceStatus(String ServiceStatus,int serviceId);
+  
+    void insert(Service service);
 }
