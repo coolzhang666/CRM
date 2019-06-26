@@ -1,7 +1,6 @@
 package cn.edu.cqut.crm.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -21,7 +20,6 @@ public class DevelopPlan {
     @JSONField(name = "planContent")
     private String planContent;
 
-//    @JsonFormat(pattern = "yyyy-MM-dd")
     @JSONField(name = "createTime")
     private Date createTime;
 
