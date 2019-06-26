@@ -26,7 +26,7 @@ public class CustomerController {
      * @return 返回客户列表
      */
     @RequestMapping(value = "/customer/{page}/{rows}", method = RequestMethod.GET)
-    public ReturnObject<Object> getAllCustomer(@PathVariable() int page, @PathVariable int rows) {
+    public ReturnObject<Object> getAllCustomer(@PathVariable() int page, @PathVariable() int rows) {
         PageHelper.startPage(page, rows);
         List<Customer> customers = customerService.getAllCustomer();
         PageInfo<Customer> pageInfo = new PageInfo<>(customers);
