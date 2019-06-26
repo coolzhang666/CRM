@@ -49,4 +49,13 @@ public class DevelopPlanService {
     public Integer deleteById(Integer planId) {
         return developPlanMapper.deleteById(planId);
     }
+
+    /**
+     * 更新DevelopPlan对象
+     * @param developPlan DevelopPlan对象
+     * @return 返回受影响的行数
+     */
+    public Integer updateDevelopPlan(DevelopPlan developPlan) {
+        return developPlanMapper.update(developPlan);
+    }
 }

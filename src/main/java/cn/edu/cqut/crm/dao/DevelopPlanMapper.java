@@ -33,4 +33,11 @@ public interface DevelopPlanMapper {
      * @return 返回受影响的行数
      */
     Integer deleteById(Integer planId);
+
+    /**
+     * 更新DevelopPlan对象
+     * @param developPlan DevelopPlan对象
+     * @return 返回受影响的行数
+     */
+    Integer update(DevelopPlan developPlan);
 }
