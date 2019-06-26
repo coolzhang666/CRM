@@ -17,7 +17,7 @@ public class SaleChanceService {
     private SaleChanceMapper saleChanceMapper;
     public void addSaleChance(SaleChance saleChance) {
         saleChance.setCreateTime(new Date());
-        System.out.println(saleChance.getChanceStatus());
+//        System.out.println(saleChance.getChanceStatus());
         if (saleChance.getChanceStatus().equals("已分配")) {
 //            System.out.println("aaaa");
             saleChance.setDispatchTime(new Date());
@@ -41,5 +41,13 @@ public class SaleChanceService {
 
     public void changeSaleChance(SaleChance saleChance) {
         saleChanceMapper.update(saleChance);
+    }
+
+
+    public void addSendPerson(SaleChance saleChance) {
+        System.out.println(saleChance.getChanceStatus());
+        saleChance.setChanceStatus("已分配");
+        saleChance.setDispatchTime(new Date());
+        saleChanceMapper.updateSend(saleChance);
     }
 }

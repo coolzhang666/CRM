@@ -57,7 +57,7 @@ public class SaleChanceController {
 
     @RequestMapping(value = "/SaleChance/{chanceId}",method = RequestMethod.DELETE)
     public Map<String, String> removeSaleChance(@PathVariable() Integer chanceId) {
-        System.out.println(chanceId);
+//        System.out.println(chanceId);
         saleChanceService.removeSaleChance(chanceId);
         Map<String, String> map = new HashMap<String, String>();
         map.put("result", "删除客户成功");
@@ -70,5 +70,12 @@ public class SaleChanceController {
         saleChanceService.changeSaleChance(saleChance);
     }
 
+    @RequestMapping(value = "/SaleChance/addSendPerson",method = RequestMethod.PUT)
+    public ReturnObject<Object> addSendPerson(SaleChance saleChance){
+        System.out.println(saleChance.getChanceStatus());
+        saleChanceService.addSendPerson(saleChance);
+        return ReturnUtil.success("指派成功", null);
+
+    }
 
 }
