@@ -44,4 +44,9 @@ public class ContactService {
     public void deleteContact(Contact contact) {
         contactMapper.deleteContact(contact);
     }
+
+    public Contact insertByName(Contact contact) {
+        contactMapper.insertByName(contact);
+        return contact;
+    }
 }

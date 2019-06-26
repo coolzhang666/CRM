@@ -25,4 +25,8 @@
     <delete id="deleteContact" parameterType="cn.edu.cqut.crm.model.Contact">
         delete from contact where contact_id=#{contactId}
     </delete>
+
+    <insert id="insertByName" parameterType="cn.edu.cqut.crm.model.Contact" useGeneratedKeys="true" keyProperty="contactId" keyColumn="contact_id">
+        insert into contact(customer_id, contact_name, contact_phone) values(#{customerId}, #{contactName}, #{contactPhone})
+    </insert>
 </mapper>

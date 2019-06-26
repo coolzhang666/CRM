@@ -30,4 +30,6 @@ public interface ContactMapper {
      * @param contact
      */
     void deleteContact(Contact contact);
+
+    Integer insertByName(Contact contact);
 }

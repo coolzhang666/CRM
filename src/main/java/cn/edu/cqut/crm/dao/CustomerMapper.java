@@ -30,4 +30,6 @@ public interface CustomerMapper {
      * @param customer 删除用户的信息
      */
     void deleteCustomer(Customer customer);
+
+    Integer insertByName(Customer customer);
 }

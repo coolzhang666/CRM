@@ -45,4 +45,9 @@ public class CustomerService {
         customer.setCustomerStatus("正常");
         customerMapper.insertCustomer(customer);
     }
+
+    public Customer insertByName(Customer customer) {
+        customerMapper.insertByName(customer);
+        return customer;
+    }
 }
