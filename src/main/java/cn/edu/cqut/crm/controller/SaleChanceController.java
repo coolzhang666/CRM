@@ -33,12 +33,12 @@ public class SaleChanceController {
         map.put("result", "新增销售机会成功");
         return map;
     }
-    @InitBinder
-    protected void init(HttpServletRequest request, ServletRequestDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        dateFormat.setLenient(false);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
-    }
+//    @InitBinder
+//    protected void init(HttpServletRequest request, ServletRequestDataBinder binder) {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        dateFormat.setLenient(false);
+//        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+//    }
 
     /**
      * 销售机会分页查询功能
