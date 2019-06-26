@@ -11,7 +11,7 @@ public interface ContactMapper {
      * 查询所有的联系人
      * @return 返回联系人列表
      */
-    List<Contact> selectAll();
+    List<Contact> selectAll(Integer customerId);
 
     /**
      * 新增客户联系人
@@ -19,7 +19,15 @@ public interface ContactMapper {
      */
     void insertContact(Contact contact);
 
+    /**
+     * 修改客户联系人
+     * @param contact
+     */
     void updateContact(Contact contact);
 
+    /**
+     * 删除客户联系人
+     * @param contact
+     */
     void deleteContact(Contact contact);
 }

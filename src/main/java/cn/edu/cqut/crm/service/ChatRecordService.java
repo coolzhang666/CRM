@@ -32,7 +32,11 @@ public class ChatRecordService {
         chatRecordMapper.update(chatRecord);
     }
 
-    public void insertChatRecord(Integer chat_id){
-        chatRecordMapper.insert(chat_id);
+    public void insertChatRecord(ChatRecord chatRecord){
+        chatRecordMapper.insert(chatRecord);
+    }
+
+    public void removeAllChatRecord(Integer customerId){
+        chatRecordMapper.removeAll(customerId);
     }
 }
