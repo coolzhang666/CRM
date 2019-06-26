@@ -19,6 +19,10 @@ public class ServiceService {
         return serviceMapper.selectAll();
     }
 
+    public List<Service> getStatus() {
+        return serviceMapper.selectStatus();
+    }
+    
     public void editService(Service service) {
         serviceMapper.updateBelong(service);
     }
