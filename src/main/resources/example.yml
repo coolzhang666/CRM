@@ -23,6 +23,10 @@ spring:
       test-on-return: false
       pool-prepared-statements: false
       max-pool-prepared-statement-per-connection-size: 20
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+    default-property-inclusion: non_null
 
 mybatis:
   mapper-locations: classpath*:top/coolzhang/cqutcrm/dao/mapper/*.xml

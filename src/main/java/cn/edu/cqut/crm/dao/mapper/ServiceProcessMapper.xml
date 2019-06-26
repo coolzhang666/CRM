@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cqut.crm.dao.ServiceProcessMapper">
+    <resultMap id="ServiceProcessResultMap" type="cn.edu.cqut.crm.model.ServiceProcess">
+        <id column="process_id" jdbcType="INTEGER" property="processId"/>
+        <result column="service_id" jdbcType="INTEGER" property="serviceId"/>
+        <result column="handler_id" jdbcType="INTEGER" property="handlerId"/>
+        <result column="handler_name" jdbcType="CHAR" property="handlerName"/>
+        <result column="customer_id" jdbcType="INTEGER" property="customerId"/>
+        <result column="hand_time" jdbcType="DATE" property="handTime"/>
+        <result column="hand_method" jdbcType="VARCHAR" property="handMethod"/>
+        <result column="hand_result" jdbcType="VARCHAR" property="handResult"/>
+        <result column="customer_satisfaction" jdbcType="CHAR" property="customerSatisfaction"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="ServiceProcessResultMap">
+        select * from service_process
+    </select>
+</mapper>

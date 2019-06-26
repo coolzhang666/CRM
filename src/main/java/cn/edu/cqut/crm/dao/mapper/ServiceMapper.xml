@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cqut.crm.dao.ServiceMapper">
+    <resultMap id="ServiceResultMap" type="cn.edu.cqut.crm.model.Service">
+        <id column="service_id" jdbcType="INTEGER" property="serviceId"/>
+        <result column="service_type" jdbcType="CHAR" property="serviceType"/>
+        <result column="creator_id" jdbcType="INTEGER" property="creatorId"/>
+        <result column="creator_name" jdbcType="CHAR" property="creatorName"/>
+        <result column="customer_id" jdbcType="INTEGER" property="customerId"/>
+        <result column="customer_name" jdbcType="CHAR" property="customerName"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <result column="belong" jdbcType="INTEGER" property="belong"/>
+        <result column="dispatch_time" jdbcType="DATE" property="dispatchTime"/>
+        <result column="service_status" jdbcType="CHAR" property="serviceStatus"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="ServiceResultMap">
+        select * from service
+    </select>
+</mapper>
