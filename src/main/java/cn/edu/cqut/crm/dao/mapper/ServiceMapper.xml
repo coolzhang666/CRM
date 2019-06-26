@@ -19,6 +19,10 @@
     <select id="selectAll" resultMap="ServiceResultMap">
         select * from service
     </select>
+
+    <select id="selectStatus" resultMap="ServiceResultMap">
+        select * from service where service_status="已归档"
+    </select>
   
     <update id="updateBelong" parameterType="cn.edu.cqut.crm.model.Service">
         update service set belong=#{belong},dispatch_time=#{dispatchTime},service_status=#{serviceStatus}
