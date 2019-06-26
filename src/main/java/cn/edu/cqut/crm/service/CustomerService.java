@@ -45,4 +45,22 @@ public class CustomerService {
         customer.setCustomerStatus("正常");
         customerMapper.insertCustomer(customer);
     }
+
+    /**
+     *
+     * @param Id 参数为客户Id
+     * @return 返回查询结果
+     */
+    public List<Customer> listId(Integer Id){
+        return customerMapper.selectId(Id);
+    }
+
+    /**
+     *
+     * @param No 参数为客户编号
+     * @return 返回查询结果
+     */
+    public List<Customer> listNo(String No){
+        return customerMapper.selectNo(No);
+    }
 }
