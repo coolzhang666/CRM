@@ -11,8 +11,16 @@ public class ServiceService {
     @Autowired
     private ServiceMapper serviceMapper;
 
+    /**
+     * 查看所有新创建服务单据
+     * @return 服务单据
+     */
     public List<Service> getAllService() {
         return serviceMapper.selectAll();
+    }
+
+    public void editService(Service service) {
+        serviceMapper.updateBelong(service);
     }
 
     public List<Service> getHandleService(int handlerId) {
