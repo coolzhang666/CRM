@@ -14,4 +14,9 @@ public class ServiceService {
     public List<Service> getAllService() {
         return serviceMapper.selectAll();
     }
+
+    public List<Service> getHandleService(int handlerId) {
+        String serviceStatus = "已分配";
+       return serviceMapper.getHandleService(handlerId,serviceStatus);
+    }
 }
