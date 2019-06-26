@@ -9,4 +9,6 @@ import java.util.List;
 public interface ServiceMapper {
 
     List<Service> selectAll();
+
+    List<Service> selectStatus();
 }

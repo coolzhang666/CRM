@@ -19,4 +19,8 @@
     <select id="selectAll" resultMap="ServiceResultMap">
         select * from service
     </select>
+
+    <select id="selectStatus" resultMap="ServiceResultMap">
+        select * from service where service_status="已归档"
+    </select>
 </mapper>
