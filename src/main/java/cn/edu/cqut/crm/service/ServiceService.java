@@ -19,4 +19,8 @@ public class ServiceService {
         String serviceStatus = "已分配";
        return serviceMapper.getHandleService(handlerId,serviceStatus);
     }
+    
+    public void insertService(Service service){
+        serviceMapper.insert(service);
+    }
 }

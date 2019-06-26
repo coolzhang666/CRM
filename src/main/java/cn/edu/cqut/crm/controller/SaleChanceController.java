@@ -55,6 +55,18 @@ public class SaleChanceController {
         return ReturnUtil.success("查询成功", saleChances, total);
     }
 
+    @RequestMapping(value = "/saleChance/success", method = RequestMethod.PUT)
+    public ReturnObject<Object> developSuccess(SaleChance saleChance) {
+        Map<String, Object> map = saleChanceService.developSuccess(saleChance);
+        return ReturnUtil.success("操作成功", map);
+    }
+
+    @RequestMapping(value = "/saleChance/failed", method = RequestMethod.PUT)
+    public ReturnObject<Object> developFailed(SaleChance saleChance) {
+        saleChanceService.developFailed(saleChance);
+        return ReturnUtil.success("操作成功", null);
+    }
+
     @RequestMapping(value = "/SaleChance/{chanceId}",method = RequestMethod.DELETE)
     public Map<String, String> removeSaleChance(@PathVariable() Integer chanceId) {
 //        System.out.println(chanceId);

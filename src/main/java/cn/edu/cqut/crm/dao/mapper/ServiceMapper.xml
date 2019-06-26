@@ -32,4 +32,10 @@
         set service_status=#{ServiceStatus}
         where service_id=#{serviceId}
     </update>
+
+    <insert id="insert" parameterType="cn.edu.cqut.crm.model.Service">
+        insert into
+        service(service_type,creator_id,creator_name,customer_id,customer_name,create_time,service_status)
+        values(#{serviceType},#{creatorId},#{creatorName},#{customerId},#{customerName},#{createTime},#{serviceStatus})
+    </insert>
 </mapper>
