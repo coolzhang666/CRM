@@ -19,4 +19,8 @@
     <select id="selectAll" resultMap="ServiceResultMap">
         select * from service
     </select>
+    <update id="updateBelong" parameterType="cn.edu.cqut.crm.model.Service">
+        update service set belong=#{belong},dispatch_time=#{dispatchTime},service_status=#{serviceStatus}
+        where service_id=#{serviceId}
+    </update>
 </mapper>

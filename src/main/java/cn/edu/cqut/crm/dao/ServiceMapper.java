@@ -8,5 +8,11 @@ import java.util.List;
 @Repository
 public interface ServiceMapper {
 
+    /**
+     * 查询所有新创建服务单据
+     * @return 服务单据
+     */
     List<Service> selectAll();
+
+    void updateBelong(Service service);
 }
