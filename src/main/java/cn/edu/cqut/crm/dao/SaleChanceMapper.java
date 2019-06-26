@@ -18,4 +18,6 @@ public interface SaleChanceMapper {
     void delete(Integer chanceid);
 
     void update(SaleChance saleChance);
+
+    void updateSend(SaleChance saleChance);
 }
