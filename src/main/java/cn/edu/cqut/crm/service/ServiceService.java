@@ -15,11 +15,12 @@ public class ServiceService {
         return serviceMapper.selectAll();
     }
 
+    public List<Service> getHandleService(int handlerId) {
+        String serviceStatus = "已分配";
+       return serviceMapper.getHandleService(handlerId,serviceStatus);
+    }
+    
     public void insertService(Service service){
         serviceMapper.insert(service);
     }
-
-
-
-
 }

@@ -20,6 +20,18 @@
         select * from service
     </select>
 
+    <select id="getHandleService" resultMap="ServiceResultMap">
+        select service_id,service_type,customer_id,customer_name,service_status,dispatch_time
+        from service
+        where belong=#{handlerId} and service_status=#{serviceStatus}
+        order by dispatch_time
+    </select>
+
+    <update id="changeServiceStatus" parameterType="cn.edu.cqut.crm.model.Service">
+        update service
+        set service_status=#{ServiceStatus}
+        where service_id=#{serviceId}
+    </update>
 
     <insert id="insert" parameterType="cn.edu.cqut.crm.model.Service">
         insert into
