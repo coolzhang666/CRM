@@ -29,4 +29,8 @@
     <delete id="deleteById" parameterType="java.lang.Integer">
         delete from develop_plan where plan_id = #{planId}
     </delete>
+
+    <update id="update" parameterType="cn.edu.cqut.crm.model.DevelopPlan">
+        update develop_plan set plan_content = #{planContent} where plan_id = #{planId}
+    </update>
 </mapper>
