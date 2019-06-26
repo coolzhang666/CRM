@@ -28,6 +28,10 @@
         delete from chat_record where chat_id=#{chat_id}
     </delete>
 
+    <delete id="removeAll" parameterType="cn.edu.cqut.crm.model.ChatRecord">
+        delete from chat_record where customer_id=#{customerId}
+    </delete>
+
     <update id="update" parameterType="cn.edu.cqut.crm.model.ChatRecord">
         update chat_record
         set customer_name=#{customerName},
@@ -37,13 +41,14 @@
         create_time=#{createTime},
         chat_address=#{chatAddress},
         more_info=#{moreInfo}
+        where customer_id=#{customerId}
     </update>
 
     <insert id="insert" parameterType="cn.edu.cqut.crm.model.ChatRecord">
         insert into
         chat_record(customer_id,customer_name,handler_id,handler_name,short_description,long_description,
-        create_date,chat_address,more_info)
-        values (#{customer_id},#{customer_name},#{handler_id},#{handler_name},#{short_description},#{long_description},
-        #{create_date},#{chat_address},#{more_info})
+        create_time,chat_address,more_info)
+        values (#{customerId},#{customerName},#{handlerId},#{handlerName},#{shortDescription},#{longDescription},
+        #{createTime},#{chatAddress},#{moreInfo})
     </insert>
 </mapper>
