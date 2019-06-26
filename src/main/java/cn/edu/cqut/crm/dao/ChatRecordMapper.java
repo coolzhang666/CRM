@@ -15,5 +15,6 @@ public interface ChatRecordMapper {
     List<ChatRecord> getMsg(Integer cusId);
     void update(ChatRecord chatRecord);
     void remove(Integer chat_id);
-    void insert(Integer chat_id);
+    void insert(ChatRecord chatRecord);
+    void removeAll(Integer customerId);
 }
