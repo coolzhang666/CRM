@@ -27,7 +27,6 @@ public class ChatRecord {
     @JSONField(name = "longDescription")
     private String longDescription;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     @JSONField(name = "createTime")
     private Date createTime;
 

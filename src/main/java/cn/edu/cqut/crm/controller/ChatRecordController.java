@@ -62,15 +62,27 @@ public class ChatRecordController {
         return ReturnUtil.success("删除成功",null);
     }
 
+
+    /**
+     *
+     * @param customerId 对应用户的id
+     * @return 返回操作结果
+     */
+    @RequestMapping(value = "/chatRecord/All/{customerId}",method = RequestMethod.DELETE)
+    public ReturnObject<Object> removeAllCharRecord(@PathVariable() Integer customerId){
+        chatRecordService.removeAllChatRecord(customerId);
+        return ReturnUtil.success("清除成功",null);
+    }
+
     /**
      *
      * @param chatRecord 查表所需的参数
      * @return 返回操作结果
      */
     @RequestMapping(value = "/chatRecord",method = RequestMethod.POST)
-    public ReturnObject<Object> insertChatRecord(Integer chatRecord) {
+    public ReturnObject<Object> insertChatRecord(ChatRecord chatRecord) {
         chatRecordService.insertChatRecord(chatRecord);
-        return ReturnUtil.success("添加成功");
+        return ReturnUtil.success("添加成功",null);
     }
 
 
@@ -82,7 +94,7 @@ public class ChatRecordController {
     @RequestMapping(value = "/chatRecord",method = RequestMethod.PUT)
     public ReturnObject<Object> updateChatRecord(ChatRecord chatRecord) {
         chatRecordService.updateChatRecord(chatRecord);
-        return ReturnUtil.success("修改成功");
+        return ReturnUtil.success("修改成功",null);
     }
 
 

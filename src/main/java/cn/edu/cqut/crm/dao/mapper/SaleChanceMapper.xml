@@ -48,4 +48,12 @@
         chance_status=#{chanceStatus} where chance_id=#{chanceId}
     </update>
 
+    <update id="updateSend" parameterType="cn.edu.cqut.crm.model.SaleChance">
+        update sale_chance set customer_name=#{customerName},customer_phone=#{customerPhone},
+        contact_name=#{contactName},contact_phone=#{contactPhone},chance_resource=#{chanceResource},
+        success_rate=#{successRate},chance_description=#{chanceDescription},creator_id=#{creatorId},
+        creator_name=#{creatorName},create_time=#{createTime},belong=#{belong},dispatch_time=#{dispatchTime},
+        chance_status=#{chanceStatus} where chance_id=#{chanceId}
+    </update>
+
 </mapper>
