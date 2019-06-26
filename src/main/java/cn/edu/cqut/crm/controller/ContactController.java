@@ -37,13 +37,14 @@ public class ContactController {
      * 联系人信息的分页查询功能
      * @param page 当前页号
      * @param rows 页面容量
+     * @param customerId 客户Id
      * @return 返回联系人列表
      */
-    @RequestMapping(value = "/contact/{page}/{rows}", method = RequestMethod.GET)
-    public ReturnObject<Object> getAllContact(@PathVariable() int page, @PathVariable int rows) {
-        System.out.println("aaa");
+    @RequestMapping(value = "/contact/{page}/{rows}/{customerId}", method = RequestMethod.GET)
+    public ReturnObject<Object> getAllContact(@PathVariable() int page, @PathVariable() int rows, @PathVariable() Integer customerId) {
+
         PageHelper.startPage(page, rows);
-        List<Contact> contacts = contactService.getAllContact();
+        List<Contact> contacts = contactService.getAllContact(customerId);
         PageInfo<Contact> pageInfo = new PageInfo<>(contacts);
         long total = pageInfo.getTotal();
         return ReturnUtil.success("查询成功", contacts, total);

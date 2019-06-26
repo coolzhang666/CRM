@@ -12,7 +12,7 @@
         <result column="contact_job" jdbcType="CHAR" property="contactJob"/>
     </resultMap>
     <select id="selectAll" resultMap="ContactResultMap">
-        select * from contact
+        select * from contact where customer_id=#{customerId}
     </select>
     <insert id="insertContact" parameterType="cn.edu.cqut.crm.model.Contact">
         insert into contact(customer_id,contact_name,contact_gender,contact_phone,contact_job)

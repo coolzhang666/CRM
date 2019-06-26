@@ -15,10 +15,10 @@ public class ContactService {
     /**
      * 查询所有的联系人
      * @return 返回联系人列表
-     * @param cusId
+     * @param customerId 客户Id
      */
-    public List<Contact> getAllContact() {
-        return contactMapper.selectAll();
+    public List<Contact> getAllContact(Integer customerId) {
+        return contactMapper.selectAll(customerId);
     }
 
     /**
@@ -29,10 +29,18 @@ public class ContactService {
         contactMapper.insertContact(contact);
     }
 
+    /**
+     * 修改联系人
+     * @param contact
+     */
     public void editContact(Contact contact) {
         contactMapper.updateContact(contact);
     }
 
+    /**
+     * 删除联系人
+     * @param contact
+     */
     public void deleteContact(Contact contact) {
         contactMapper.deleteContact(contact);
     }
