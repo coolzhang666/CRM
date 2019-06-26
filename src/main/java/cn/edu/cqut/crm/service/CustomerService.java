@@ -63,4 +63,9 @@ public class CustomerService {
     public List<Customer> listNo(String No){
         return customerMapper.selectNo(No);
     }
+
+    public Customer insertByName(Customer customer) {
+        customerMapper.insertByName(customer);
+        return customer;
+    }
 }

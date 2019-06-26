@@ -39,6 +39,10 @@ select * form customer where customer_no=#{No}
        #{customerRegion},#{customerStatus},#{customerAddress},#{customerCooperation})
     </insert>
 
+    <insert id="insertByName" parameterType="cn.edu.cqut.crm.model.Customer" useGeneratedKeys="true" keyProperty="customerId" keyColumn="customer_id">
+        insert into customer(customer_name, customer_phone) values(#{customerName}, #{customerPhone})
+    </insert>
+
     <update id="updateCustomer" parameterType="cn.edu.cqut.crm.model.Customer">
         update customer set customer_no=#{customerNo},customer_name=#{customerName},customer_email=#{customerEmail},
         customer_grade=#{customerGrade},customer_phone=#{customerPhone},customer_credit=#{customerCredit},

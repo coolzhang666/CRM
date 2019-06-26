@@ -42,4 +42,6 @@ public interface CustomerMapper {
      * @param No 返回匹配的No
      */
     List<Customer> selectNo(String No);
+
+    Integer insertByName(Customer customer);
 }
