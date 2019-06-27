@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cqut.crm.dao.DelayRecordMapper">
+    <resultMap id="DelayRecordResultMap" type="cn.edu.cqut.crm.model.DelayRecord">
+        <id column="delay_id" jdbcType="INTEGER" property="delayId"/>
+        <result column="customer_id" jdbcType="INTEGER" property="customerId"/>
+        <result column="delay_method" jdbcType="VARCHAR" property="delayMethod"/>
+        <result column="creator_id" jdbcType="INTEGER" property="creatorId"/>
+        <result column="creator_name" jdbcType="CHAR" property="creatorName"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="DelayRecordResultMap">
+        selece * from delay_record
+    </select>
+
+    <select id="selectByCustomerId" resultMap="DelayRecordResultMap" parameterType="Integer">
+        select * from delay_record where customer_id = #{customerId}
+    </select>
+
+    <insert id="insert" parameterType="cn.edu.cqut.crm.model.DelayRecord">
+        insert into delay_record(customer_id, delay_method, creator_id, creator_name, create_time)
+        values(#{customerId}, #{delayMethod}, #{creatorId}, #{creatorName}, #{createTime})
+    </insert>
+
+    <update id="update" parameterType="cn.edu.cqut.crm.model.DelayRecord">
+        update delay_record set delay_method = #{delayMethod} where delay_id = #{delayId}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from delay_record where delay_id = #{delayId}
+    </delete>
+</mapper>

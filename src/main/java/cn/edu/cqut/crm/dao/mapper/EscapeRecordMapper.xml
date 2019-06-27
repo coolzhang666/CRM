@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cqut.crm.dao.EscapeRecordMapper">
+    <resultMap id="EscapeRecordResultMap" type="cn.edu.cqut.crm.model.EscapeRecord">
+        <id column="escape_id" jdbcType="INTEGER" property="escapeId"/>
+        <result column="customer_id" jdbcType="INTEGER" property="customerId"/>
+        <result column="escape_reason" jdbcType="VARCHAR" property="escapeReason"/>
+        <result column="creator_id" jdbcType="INTEGER" property="creatorId"/>
+        <result column="creator_name" jdbcType="CHAR" property="creatorName"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.edu.cqut.crm.model.EscapeRecord">
+        insert into escape_record(customer_id, escape_reason, creator_id, creator_name, create_time)
+        values(#{customerId}, #{escapeReason}, #{creatorId}, #{creatorName}, #{createTime})
+    </insert>
+</mapper>
