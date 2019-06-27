@@ -101,4 +101,13 @@ public class CustomerController {
         customerService.deleteCustomer(customer);
         return ReturnUtil.success("删除成功",null);
     }
+
+    @RequestMapping(value = "/customer/escape/{page}/{rows}", method = RequestMethod.GET)
+    public ReturnObject<Object> getWillEscape(@PathVariable() Integer page, @PathVariable() Integer rows) {
+        PageHelper.startPage(page, rows);
+        List<Customer> customers = customerService.getWillEscape();
+        PageInfo<Customer> pageInfo = new PageInfo<>(customers);
+        long total = pageInfo.getTotal();
+        return ReturnUtil.success("查询成功", customers, total);
+    }
 }
