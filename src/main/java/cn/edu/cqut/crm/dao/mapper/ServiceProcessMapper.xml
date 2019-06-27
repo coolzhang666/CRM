@@ -21,7 +21,6 @@
 
     <insert id="addServiceProcess" parameterType="cn.edu.cqut.crm.model.ServiceProcess">
         insert into service_process(service_id,handler_id,handler_name,customer_id,hand_time,hand_method,hand_result,customer_satisfaction)
-        values service_id=#{serviceId},handler_id=#{handlerId},handler_name={handlerName},
-        customer_id=#{customerId},hand_time=#{handTime},hand_method=#{handMethod},hand_result=#{handResult},customer_satisfaction=#{customerSatisfaction}
+        values (#{serviceId},#{handlerId},#{handlerName},#{customerId},#{handTime},#{handMethod},#{handResult},#{customerSatisfaction})
     </insert>
 </mapper>
