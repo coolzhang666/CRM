@@ -19,6 +19,8 @@ public class ServiceService {
         return serviceMapper.selectAll();
     }
 
+    public List<Service> getNewService() {return serviceMapper.selectNewService(); }
+
     public List<Service> getStatus() {
         return serviceMapper.selectStatus();
     }
