@@ -22,12 +22,12 @@
     </select>
 
 
-    <select id="selectId" resultMap="CustomerResultMap">
-        select * form customer where customer_id=#{Id}
+    <select id="selectById" resultMap="CustomerResultMap">
+        select * from customer where customer_id=#{customerId}
     </select>
 
     <select id="selectNo" resultMap="CustomerResultMap">
-select * form customer where customer_no=#{No}
+        select * from customer where customer_no=#{No}
     </select>
 
 
@@ -47,7 +47,7 @@ select * form customer where customer_no=#{No}
         update customer set customer_no=#{customerNo},customer_name=#{customerName},customer_email=#{customerEmail},
         customer_grade=#{customerGrade},customer_phone=#{customerPhone},customer_credit=#{customerCredit},
        customer_region=#{customerRegion},customer_address=#{customerAddress},
-       customer_cooperation=#{customerCooperation}
+       customer_cooperation=#{customerCooperation}, customer_satisfaction=#{customerSatisfaction}, customer_status = #{customerStatus}
        where customer_id=#{customerId}
     </update>
 
