@@ -15,7 +15,15 @@
         <result column="order_status" jdbcType="CHAR" property="orderStatus"/>
     </resultMap>
 
-    <select id="selectAll" resultMap="OrderResultMap">
-        select * from customer_order
+    <select id="selectAll" resultType="cn.edu.cqut.crm.model.OrderStatistics">
+        SELECT customer_name as statisticsCustomerName, SUM(total_price) as statisticsTotalPrice from customer_order GROUP BY customer_name
     </select>
+
+    <select id="selectYear16" resultType="cn.edu.cqut.crm.model.OrderStatistics">
+        select customer_name as statisticsCustomerName, sum(total_price) as statisticsTotalPrice
+        from customer_order
+        where order_time>="2016-01-01" and order_time &lt; "2017-01-01"
+        group by customer_name
+    </select>
+
 </mapper>
