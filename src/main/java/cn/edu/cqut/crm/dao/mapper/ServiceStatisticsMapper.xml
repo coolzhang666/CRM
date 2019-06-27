@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cqut.crm.dao.ServiceStatisticsMapper">
+    <select id="getServiceType" resultType="cn.edu.cqut.crm.model.ServiceStatistics">
+        select service_type as 'serviceType' ,count(*) as 'countService' from service group by service_type
+    </select>
+</mapper>
