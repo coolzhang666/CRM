@@ -24,9 +24,7 @@ public class ServiceService {
     public List<Service> getStatus(String status) {
         return serviceMapper.selectStatus(status);
     }
-    
-    public List<Service> getNewService() {return serviceMapper.selectNewService(); }
-    
+
     public void editService(Service service) {
         serviceMapper.updateBelong(service);
     }

@@ -33,10 +33,6 @@
         where service_id=#{serviceId}
     </update>
 
-    <select id="selectStatus" resultMap="ServiceResultMap">
-        select * from service where service_status="已归档"
-    </select>
-
     <select id="getHandleService" resultMap="ServiceResultMap">
         select service_id,service_type,customer_id,customer_name,service_status,dispatch_time
         from service
