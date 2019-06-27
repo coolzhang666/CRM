@@ -33,7 +33,7 @@ select * form customer where customer_no=#{No}
 
 
     <insert id="insertCustomer" parameterType="cn.edu.cqut.crm.model.Customer">
-       insert customer(customer_no,customer_name,customer_email,customer_grade,customer_phone,customer_credit,
+       insert into customer(customer_no,customer_name,customer_email,customer_grade,customer_phone,customer_credit,
        customer_region,customer_status,customer_address,customer_cooperation)
        values(#{customerNo},#{customerName},#{customerEmail},#{customerGrade},#{customerPhone},#{customerCredit},
        #{customerRegion},#{customerStatus},#{customerAddress},#{customerCooperation})

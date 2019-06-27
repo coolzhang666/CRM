@@ -16,6 +16,8 @@ public interface ServiceMapper {
 
     List<Service> selectStatus(String status);
   
+    List<Service> selectNewService();
+  
     void updateBelong(Service service);
   
     List<Service> getHandleService(int handlerId,String serviceStatus);

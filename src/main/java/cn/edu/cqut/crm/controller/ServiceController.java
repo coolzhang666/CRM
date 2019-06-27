@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Date;
 import java.util.List;
 
@@ -47,9 +48,9 @@ public class ServiceController {
      * @return 服务单据
      */
     @RequestMapping(value = "/service/{page}/{rows}", method = RequestMethod.GET)
-    public ReturnObject<Object> getAllService(@PathVariable() int page, @PathVariable() int rows){
+    public ReturnObject<Object> getNewService(@PathVariable() int page, @PathVariable() int rows){
         PageHelper.startPage(page, rows);
-        List<Service> services = serviceService.getAllService();
+        List<Service> services = serviceService.getNewService();
         PageInfo<Service> pageInfo = new PageInfo<>(services);
         long total = pageInfo.getTotal();
         return ReturnUtil.success("查询成功",services,total);
@@ -76,7 +77,6 @@ public class ServiceController {
         long total = pageInfo.getTotal();
         return ReturnUtil.success("查询成功", services, total);
     }
-
 
     /**
      *
