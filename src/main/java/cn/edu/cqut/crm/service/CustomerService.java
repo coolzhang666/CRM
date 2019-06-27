@@ -47,12 +47,12 @@ public class CustomerService {
     }
 
     /**
-     *
-     * @param Id 参数为客户Id
-     * @return 返回查询结果
+     * 根据客户id查询客户
+     * @param customerId 客户id
+     * @return 返回客户信息
      */
-    public List<Customer> listId(Integer Id){
-        return customerMapper.selectId(Id);
+    public Customer getCustomerById(Integer customerId){
+        return customerMapper.selectById(customerId);
     }
 
     /**
@@ -71,5 +71,14 @@ public class CustomerService {
 
     public List<Customer> getWillEscape() {
         return customerMapper.selectWillEscape();
+    }
+
+
+    public Integer getVip(String rank){return customerMapper.selectVip(rank);}
+
+    public Integer getCredit(String credit) { return customerMapper.selectCredit(credit);
+    }
+
+    public Integer getSatisfaction(String satisfaction) { return customerMapper.selectSatisfaction(satisfaction);
     }
 }
