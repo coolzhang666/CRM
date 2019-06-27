@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Date;
 import java.util.List;
 
@@ -30,11 +31,11 @@ public class ServiceController {
         return ReturnUtil.success("查询成功", service, total);
     }
 
-    @RequestMapping(value = "/Service2/{page}/{rows}/", method = RequestMethod.GET)
-    public ReturnObject<Object> getStatus(@PathVariable() int page, @PathVariable() int rows) {
-        System.out.println(page);
+    @RequestMapping(value = "/Service2/{page}/{rows}/{status}", method = RequestMethod.GET)
+    public ReturnObject<Object> getStatus(@PathVariable() int page, @PathVariable() int rows,@PathVariable() String status) {
+//        System.out.println(status);
         PageHelper.startPage(page, rows);
-        List<Service> service = serviceService.getStatus();
+        List<Service> service = serviceService.getStatus(status);
         PageInfo<Service> pageInfo = new PageInfo<>(service);
         long total = pageInfo.getTotal();
         return ReturnUtil.success("查询成功", service, total);
@@ -76,7 +77,6 @@ public class ServiceController {
         long total = pageInfo.getTotal();
         return ReturnUtil.success("查询成功", services, total);
     }
-
 
     /**
      *
