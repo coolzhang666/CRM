@@ -78,7 +78,6 @@ public class ServiceController {
         return ReturnUtil.success("查询成功", services, total);
     }
 
-
     /**
      *
      * @param service 传入参数对应Service类的字段
