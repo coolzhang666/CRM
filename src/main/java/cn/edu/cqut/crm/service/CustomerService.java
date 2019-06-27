@@ -68,4 +68,8 @@ public class CustomerService {
         customerMapper.insertByName(customer);
         return customer;
     }
+
+    public List<Customer> getWillEscape() {
+        return customerMapper.selectWillEscape();
+    }
 }

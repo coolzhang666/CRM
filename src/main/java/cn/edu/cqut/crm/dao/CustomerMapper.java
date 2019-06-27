@@ -44,4 +44,6 @@ public interface CustomerMapper {
     List<Customer> selectNo(String No);
 
     Integer insertByName(Customer customer);
+
+    List<Customer> selectWillEscape();
 }

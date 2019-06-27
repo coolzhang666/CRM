@@ -31,7 +31,6 @@ select * form customer where customer_no=#{No}
     </select>
 
 
-
     <insert id="insertCustomer" parameterType="cn.edu.cqut.crm.model.Customer">
        insert into customer(customer_no,customer_name,customer_email,customer_grade,customer_phone,customer_credit,
        customer_region,customer_status,customer_address,customer_cooperation)
@@ -39,7 +38,8 @@ select * form customer where customer_no=#{No}
        #{customerRegion},#{customerStatus},#{customerAddress},#{customerCooperation})
     </insert>
 
-    <insert id="insertByName" parameterType="cn.edu.cqut.crm.model.Customer" useGeneratedKeys="true" keyProperty="customerId" keyColumn="customer_id">
+    <insert id="insertByName" parameterType="cn.edu.cqut.crm.model.Customer" useGeneratedKeys="true"
+            keyProperty="customerId" keyColumn="customer_id">
         insert into customer(customer_name, customer_phone) values(#{customerName}, #{customerPhone})
     </insert>
 
@@ -54,4 +54,14 @@ select * form customer where customer_no=#{No}
     <delete id="deleteCustomer" parameterType="cn.edu.cqut.crm.model.Customer">
         delete from customer where customer_id=#{customerId}
     </delete>
+
+    <select id="selectWillEscape" resultMap="CustomerResultMap">
+        select *
+        from customer
+        where customer_id not in (
+            select distinct customer_id
+            from customer_order
+            where order_time > DATE_SUB(now(),INTERVAL 6 MONTH)
+        )
+    </select>
 </mapper>
