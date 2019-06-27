@@ -55,18 +55,6 @@ public class CustomerController {
     }
 
     /**
-     *
-     * @param Id 参数为用户Id
-     * @return 返回这个Id的用户信息
-     */
-    @RequestMapping(value = "/customer/Id/{Id}",method = RequestMethod.GET)
-    public ReturnObject<Object> getCusId(@PathVariable() Integer Id){
-        return ReturnUtil.success(customerService.listId(Id));
-    }
-
-//    @RequestMapping("/insertCustomer")
-
-    /**
      * 客户信息增加功能
      * @param customer 要增加客户的信息
      * @return 增加是否成功的信息
