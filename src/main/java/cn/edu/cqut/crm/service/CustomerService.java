@@ -72,4 +72,13 @@ public class CustomerService {
     public List<Customer> getWillEscape() {
         return customerMapper.selectWillEscape();
     }
+
+
+    public Integer getVip(String rank){return customerMapper.selectVip(rank);}
+
+    public Integer getCredit(String credit) { return customerMapper.selectCredit(credit);
+    }
+
+    public Integer getSatisfaction(String satisfaction) { return customerMapper.selectSatisfaction(satisfaction);
+    }
 }

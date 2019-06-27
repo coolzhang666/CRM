@@ -64,4 +64,17 @@
             where order_time > DATE_SUB(now(),INTERVAL 6 MONTH)
         )
     </select>
+
+    <select id="selectVip" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from customer where customer_grade=#{rank}
+    </select>
+
+    <select id="selectCredit" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from customer where customer_credit=#{credit}
+    </select>
+
+
+    <select id="selectSatisfaction" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from customer where customer_satisfaction=#{satisfaction}
+    </select>
 </mapper>

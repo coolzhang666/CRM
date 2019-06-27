@@ -47,4 +47,10 @@ public interface CustomerMapper {
     Integer insertByName(Customer customer);
 
     List<Customer> selectWillEscape();
+
+    Integer selectVip(String rank);
+
+    Integer selectCredit(String credit);
+
+    Integer selectSatisfaction(String satisfaction);
 }
