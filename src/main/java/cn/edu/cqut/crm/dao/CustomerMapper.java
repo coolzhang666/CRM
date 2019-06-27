@@ -32,10 +32,11 @@ public interface CustomerMapper {
     void deleteCustomer(Customer customer);
 
     /**
-     *
-     * @param Id 返回匹配的id
+     * 根据客户id查询客户
+     * @param customerId 客户id
+     * @return 返回客户信息
      */
-    List<Customer> selectId(Integer Id);
+    Customer selectById(Integer customerId);
 
     /**
      *
@@ -46,4 +47,10 @@ public interface CustomerMapper {
     Integer insertByName(Customer customer);
 
     List<Customer> selectWillEscape();
+
+    Integer selectVip(String rank);
+
+    Integer selectCredit(String credit);
+
+    Integer selectSatisfaction(String satisfaction);
 }
