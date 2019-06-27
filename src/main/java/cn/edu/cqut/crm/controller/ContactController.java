@@ -1,7 +1,6 @@
 package cn.edu.cqut.crm.controller;
 
 import cn.edu.cqut.crm.model.Contact;
-import cn.edu.cqut.crm.model.Customer;
 import cn.edu.cqut.crm.service.ContactService;
 import cn.edu.cqut.crm.util.ReturnObject;
 import cn.edu.cqut.crm.util.ReturnUtil;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
