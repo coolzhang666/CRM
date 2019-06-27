@@ -14,6 +14,8 @@ public interface ServiceMapper {
      */
     List<Service> selectAll();
 
+    List<Service> selectNewService();
+
     List<Service> selectStatus();
   
     void updateBelong(Service service);
