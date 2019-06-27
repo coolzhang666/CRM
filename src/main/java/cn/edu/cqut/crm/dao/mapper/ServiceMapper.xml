@@ -20,8 +20,12 @@
         select * from service
     </select>
 
-    <select id="selectStatus" resultMap="ServiceResultMap">
-        select * from service where service_status="已归档"
+    <select id="selectStatus" resultMap="ServiceResultMap" parameterType="java.lang.String">
+        select * from service where service_status= #{status}
+    </select>
+
+    <select id="selectNewService" resultMap="ServiceResultMap">
+        select * from service where service_status="新创建"
     </select>
   
     <update id="updateBelong" parameterType="cn.edu.cqut.crm.model.Service">
