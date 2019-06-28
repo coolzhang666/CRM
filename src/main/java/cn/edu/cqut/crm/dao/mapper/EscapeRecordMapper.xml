@@ -16,4 +16,16 @@
         insert into escape_record(customer_id, escape_reason, creator_id, creator_name, create_time)
         values(#{customerId}, #{escapeReason}, #{creatorId}, #{creatorName}, #{createTime})
     </insert>
+    
+    <select id="selectAsCustomerId">
+        select * from escape_record where customer_id=#{customerId}
+    </select>
+
+    <select id="selectAsCreatorId">
+        select * from escape_record where creator_id=#{creatorId}
+    </select>
+
+    <select id="selectAsEscapeReason" resultType="cn.edu.cqut.crm.model.LoseCount">
+        select escape_reason as 'type',count(*) as 'totalNum' from escape_record GROUP BY escape_reason
+    </select>
 </mapper>
