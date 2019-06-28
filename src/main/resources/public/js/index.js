@@ -66,8 +66,8 @@ var data = [{
 	iconCls: 'icon-more',
 	state: 'close',
 	children: [{
-		text: '待补充',
-		href: 'html/system/demo.html'
+		text: '新建用户',
+		href: 'html/system/addUser.html'
 	}]
 }];
 
@@ -81,9 +81,11 @@ $(document).ready(function() {
 			if ("1" == data.status) {
 				loginObj = data.data;
 				document.getElementById("login").innerText = loginObj.userName;
+				document.getElementById("logout_wrapper").style.display = "block";
 			} else {
 				loginObj = null;
 				document.getElementById("login").innerText = "登录";
+				document.getElementById("logout_wrapper").style.display = "none";
 			}
 		}
 	});
@@ -91,11 +93,21 @@ $(document).ready(function() {
 	$('#sm').sidemenu({
 		onSelect: function(obj) {
 			if(loginObj != null) {
-				if((loginObj.userRole == '销售主管' || loginObj.userRole =='客户经理' || loginObj.userRole == '系统管理员')) {
-					if(loginObj.userRole =='系统管理员'){
-//						alert(loginObj.userRole);
-						var tabt = $('#tt').tabs('getTab', obj.text);
-						if(tabt == null) {
+				if (loginObj.userRole == "系统管理员") {
+					var tabt = $('#tt').tabs('getTab', obj.text);
+					if(tabt == null) {
+						$('#tt').tabs('add', {
+							title: obj.text,
+							closable: true,
+							href: obj.href,
+						});
+					} else {
+						$('#tt').tabs('select', obj.text);
+					}
+				} else if (loginObj.userRole == "高管") {
+					var tabt = $('#tt').tabs('getTab', obj.text);
+					if ("客户贡献分析" == obj.text || "客户构成分析" == obj.text || "客户服务分析" == obj.text || "客户流失分析" == obj.text) {
+						if (tabt == null) {
 							$('#tt').tabs('add', {
 								title: obj.text,
 								closable: true,
@@ -104,12 +116,13 @@ $(document).ready(function() {
 						} else {
 							$('#tt').tabs('select', obj.text);
 						}
+					} else {
+						$.messager.alert("提示", "权限不足");
 					}
-					
-					else if((obj.text == '新增销售机会')&&(loginObj.userRole == '销售主管' || loginObj.userRole=='客户经理')) {
-						alert(loginObj.userRole);
-						var tabt = $('#tt').tabs('getTab', obj.text);
-						if(tabt == null) {
+				} else if (loginObj.userRole == "销售主管") {
+					var tabt = $('#tt').tabs('getTab', obj.text);
+					if ("新增客户" != obj.text && "查看客户" != obj.text && "流失预警" != obj.text && "新增用户" != obj.text && "服务反馈" != obj.text) {
+						if (tabt == null) {
 							$('#tt').tabs('add', {
 								title: obj.text,
 								closable: true,
@@ -118,10 +131,24 @@ $(document).ready(function() {
 						} else {
 							$('#tt').tabs('select', obj.text);
 						}
+					} else {
+						$.messager.alert("提示", "权限不足");
 					}
-
-				} else {
-					$.messager.alert("提示", "权限不够，无法操作");
+				} else if (loginObj.userRole == "客户经理") {
+					var tabt = $('#tt').tabs('getTab', obj.text);
+					if ("客户贡献分析" != obj.text && "客户构成分析" != obj.text && "客户服务分析" != obj.text && "客户流失分析" != obj.text) {
+						if (tabt == null) {
+							$('#tt').tabs('add', {
+								title: obj.text,
+								closable: true,
+								href: obj.href,
+							});
+						} else {
+							$('#tt').tabs('select', obj.text);
+						}
+					} else {
+						$.messager.alert("提示", "权限不足");
+					}
 				}
 			} else {
 				$.messager.alert("提示", "请先登录");
@@ -131,8 +158,23 @@ $(document).ready(function() {
 	});
 
 	$("#login").click(function() {
-		$("#loginForm").form("reset");
-		$("#loginDialog").dialog("open");
+		if (loginObj == null) {
+			$("#loginForm").form("reset");
+			$("#loginDialog").dialog("open");
+		}
+	});
+
+	$("#logout").click(function () {
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/logout",
+			success: function(data) {
+				$.messager.alert("提示", "注销成功");
+				loginObj = null;
+				document.getElementById("login").innerText = "登录";
+				document.getElementById("logout_wrapper").style.display = "none";
+			}
+		});
 	});
 });
 
@@ -150,6 +192,7 @@ function login() {
 					$("#loginForm").form("reset");
 					loginObj = data.data;
 					document.getElementById("login").innerText = loginObj.userName;
+					document.getElementById("logout_wrapper").style.display = "block";
 				} else {
 					$.messager.alert("提示", data.msg);
 				}

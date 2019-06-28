@@ -17,4 +17,10 @@ public class UserService {
     public User getUserByNo(String userNo) {
         return userMapper.selectByNo(userNo);
     }
+
+    public Integer addUser(User user) {
+        user.setUserPassword("1234");
+        user.setUserStatus("正常");
+        return userMapper.insert(user);
+    }
 }

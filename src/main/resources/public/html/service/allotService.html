@@ -72,12 +72,16 @@
 	
 	// 分配服务
 	function allotService(){
-		var boo = $("#newService").datagrid("getSelected");
-		if (boo) {
-			$("#dlgAllotService").dialog("open");
-			$("#editBelong").form("load",boo);
-		} else{
-			$.messager.alert("提示","请选择服务");
+		if ("销售主管" == loginObj.userRole) {
+			var boo = $("#newService").datagrid("getSelected");
+			if (boo) {
+				$("#dlgAllotService").dialog("open");
+				$("#editBelong").form("load", boo);
+			} else {
+				$.messager.alert("提示", "请选择服务");
+			}
+		} else {
+			$.messager.alert("提示", "权限不足")
 		}
 	}
 	

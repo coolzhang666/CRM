@@ -18,10 +18,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/user/{userId}")
-    public ReturnObject<Object> getUserById(@PathVariable() Integer userId) {
-        User user = userService.getUserById(userId);
-        return ReturnUtil.success("啊啊啊啊", user);
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public ReturnObject<Object> getUserById(User user) {
+        Integer integer = userService.addUser(user);
+        return ReturnUtil.success("新增成功", integer);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -42,6 +42,13 @@ public class UserController {
         } else {
             return ReturnUtil.fail("用户不存在", null);
         }
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ReturnObject<Object> logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return ReturnUtil.success("注销成功", null);
     }
 
     @RequestMapping(value = "/checkOnline", method = RequestMethod.GET)

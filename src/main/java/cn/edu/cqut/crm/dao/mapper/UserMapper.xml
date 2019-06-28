@@ -23,4 +23,9 @@
     <select id="selectByNo" resultMap="UserResultMap" parameterType="java.lang.String">
         select * from user where user_no = #{userNo}
     </select>
+
+    <insert id="insert" parameterType="cn.edu.cqut.crm.model.User">
+        insert into user(user_no, user_name, user_gender, user_phone, user_email, user_address, user_password, user_role, user_status)
+        values(#{userNo}, #{userName}, #{userGender}, #{userPhone}, #{userEmail}, #{userAddress}, #{userPassword}, #{userRole}, #{userStatus})
+    </insert>
 </mapper>
