@@ -1,0 +1,93 @@
+<center style="margin-top: 20px;">
+    <h2 align="center">新增用户</h2>
+    <div class="easyui-panel" style="width:400px" data-options="border:false">
+        <div style="padding:10px 60px 20px 60px">
+            <form id="addUserForm" method="post">
+                <table cellpadding="8" cellspacing="8">
+                    <tr>
+                        <td>用户编号:</td>
+                        <td>
+                            <input class="easyui-textbox" type="text" name="userNo" data-options="required:true"
+                                   style="width: 170px;"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>用户名称:</td>
+                        <td><input class="easyui-textbox" type="text" name="userName" data-options="required:true"
+                                   style="width: 170px;"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>用户性别:</td>
+                        <td style="padding-left: 40px;">
+                            <form id="ff">
+                                <div>
+                                    <input class="easyui-radiobutton" checked="true" labelWidth="45"
+                                           labelPosition="after" name="userGender" value="男" label="男">
+                                    <input class="easyui-radiobutton" labelWidth="45" labelPosition="after"
+                                           name="userGender" value="女" label="女">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>用户电话:</td>
+                        <td><input class="easyui-textbox" type="text" name="userPhone" data-options="required:true"
+                                   style="width: 170px;"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>用户邮箱:</td>
+                        <td><input class="easyui-textbox" type="text" name="userEmail" data-options="required:true"
+                                   style="width: 170px;"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>用户地址:</td>
+                        <td><input class="easyui-textbox" type="text" name="userAddress"
+                                   data-options="required:true,multiline:true,height:60" style="width: 170px;"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>用户角色:</td>
+                        <td>
+                            <select panlHight="auto" class="easyui-combobox" name="userRole"
+                                    data-options="required:true" style="width: 170px;">
+                                <option value="客户经理">客户经理</option>
+                                <option value="销售主管">销售主管</option>
+                                <option value="高管">高管</option>
+                                <option value="系统管理员">系统管理员</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div style="text-align:center;padding:5px">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addUser()" style="margin-right: 30px;">新增</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="cancelAddUser()" style="margin-left: 30px;">清空</a>
+            </div>
+        </div>
+    </div>
+</center>
+
+<script type="text/javascript">
+    function addUser() {
+        var validate = $("#addUserForm").form("validate");
+        if (validate) {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/user",
+                dataType: "JSON",
+                data: $("#addUserForm").serialize(),
+                success: function (data) {
+                    $("#addUserForm").form("reset");
+                    $.messager.alert("提示", data.msg);
+                }
+            });
+        }
+    }
+
+    function cancelAddUser() {
+        $("#addUserForm").form("reset");
+    }
+</script>

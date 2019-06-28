@@ -7,7 +7,6 @@
 					<tr>
 						<td>客户姓名:</td>
 						<td>
-<!--							<input class="easyui-textbox" type="text" id="customerName" name="customerName" data-options="required:true" style="width: 170px;"></input>-->
 							<input class="easyui-validatebox" id="customerName" name="customerName" data-options="required:true" style="height: 28px;width:168px;position: relative;
 												  border: 1px solid #95B8E7;
 												  background-color: #fff;
@@ -93,7 +92,6 @@
 	</div>
 </center>
 <script type="text/javascript">
-
 	$(document).ready(function() {
 		// alert(loginObj);
 		$("#customerName").blur(function() {
@@ -115,8 +113,6 @@
 	});
 
 	function setText() {
-		// alert(loginObj.userName);
-
 		var value = $('#belong').val();
 		//		alert(value);    
 		if (value != "") { //当文本框的值value不为空时，执行的操作
@@ -135,7 +131,6 @@
 		$("#chanceStatus").textbox('enable');
 		$("#creatorId").textbox('enable');
 		$("#creatorName").textbox('enable');
-
 		if (boo) {
 			$.ajax({
 				type: 'post', //提交方式

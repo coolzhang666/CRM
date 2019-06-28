@@ -230,18 +230,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td>信用级别:</td>
-						<td>
-							<select panlHight="auto" class="easyui-combobox" name="customerCooperation" data-options="width:170,required:true">
-								<option value="普通客户">普通客户</option>
-								<option value="VIP客户">VIP大客户</option>
-								<option value="重点开发客户">重点开发客户</option>
-								<option value="合作伙伴">合作伙伴</option>
-								<option value="战略合作伙伴">战略合作伙伴</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
 						<td>客户等级</td>
 						<td>
 							<select panlHight="auto" class="easyui-combobox" name="customerGrade" data-options="width:170,required:true">
@@ -529,6 +517,7 @@
 			$.messager.alert("错误提示", "输入正确的电话号码");
 		}
 	}
+  
 	function removeCustomer_NO(){
 		$('#dlgCustomer').dialog('close');
 	}
