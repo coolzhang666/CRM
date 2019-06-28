@@ -33,7 +33,28 @@
 					<input type="hidden" name="serviceId" />
 					<input type="hidden" name="servicedispatchTime" />
 					<input type="hidden" name="serviceStatus" />
-					<td><select class="easyui-combobox" name="belong" style="width: 172px;" data-options="textField:'belong',valueField:'belong',required:true"></select>
+					<td><input id="allotBelong" class="easyui-combobox" name="belong" style="width: 172px;" data-options="required:true" />
+						<script>
+							$('#allotBelong').combobox({
+								valueField: 'belong',
+								textField: 'belong',
+								panelHeight:150,
+								loader: listAllotLoader
+							})
+
+							function listAllotLoader(param, success, error) {
+								$.ajax({
+									type: 'GET',
+									url: 'http://localhost:8080/user',
+									success: function(re) {
+										var obj = re.data;
+										for(var i=0;i<obj.length;i++)
+											obj[i].belong = obj[i].userId;
+										success(obj)
+									}
+								})
+							}
+						</script>
 					</td>
 				</tr>
 			</table>

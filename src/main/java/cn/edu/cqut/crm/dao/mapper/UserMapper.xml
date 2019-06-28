@@ -23,4 +23,10 @@
     <select id="selectByNo" resultMap="UserResultMap" parameterType="java.lang.String">
         select * from user where user_no = #{userNo}
     </select>
+    
+    <select id="selectByRole" resultMap="UserResultMap">
+        select * from user where user_role = '客户经理'
+    </select>
+
+    
 </mapper>
