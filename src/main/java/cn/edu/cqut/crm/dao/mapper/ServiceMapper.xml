@@ -53,9 +53,9 @@
     </insert>
 
     <select id="getHandService" resultMap="ServiceResultMap">
-        select service_id,service_type,customer_id,customer_name,service_status,hand_time
+        select *
         from service
         where service_status=#{serviceStatus}
-        order by dispatch_time
+        order by create_time
     </select>
 </mapper>

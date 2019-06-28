@@ -23,4 +23,11 @@
         insert into service_process(service_id,handler_id,handler_name,customer_id,hand_time,hand_method,hand_result,customer_satisfaction)
         values (#{serviceId},#{handlerId},#{handlerName},#{customerId},#{handTime},#{handMethod},#{handResult},#{customerSatisfaction})
     </insert>
+    <delete id="deleteService" parameterType="cn.edu.cqut.crm.model.ServiceProcess">
+        delete from service_process where service_id=#{serviceId}
+    </delete>
+
+    <update id="changServiceProcess" parameterType="cn.edu.cqut.crm.model.ServiceProcess">
+        update service_process set customer_satisfaction=#{customerSatisfaction},hand_result=#{handResult} where service_id=#{serviceId}
+    </update>
 </mapper>

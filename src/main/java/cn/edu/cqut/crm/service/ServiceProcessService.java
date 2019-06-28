@@ -28,4 +28,16 @@ public class ServiceProcessService {
         serviceMapper.changeServiceStatus( ServiceStatus,serviceId);
         processMapper.addServiceProcess(serviceId,handlerId,handlerName,customerId,new Date(),handMethod,handResult,customerSatisfaction);
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void feedBackService(int serviceId, String customerSatisfaction, String handResult) {
+        if(Integer.parseInt(customerSatisfaction) > 3) {
+            serviceMapper.changeServiceStatus("已归档",serviceId);
+            processMapper.changServiceProcess(serviceId,customerSatisfaction,handResult);
+        }
+        else {
+            processMapper.deleteService(serviceId);
+            serviceMapper.changeServiceStatus("已分配",serviceId);
+        }
+    }
 }
