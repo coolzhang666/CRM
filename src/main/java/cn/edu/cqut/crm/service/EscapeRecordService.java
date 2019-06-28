@@ -4,6 +4,7 @@ import cn.edu.cqut.crm.dao.EscapeRecordMapper;
 import cn.edu.cqut.crm.model.Customer;
 import cn.edu.cqut.crm.model.DelayRecord;
 import cn.edu.cqut.crm.model.EscapeRecord;
+import cn.edu.cqut.crm.model.LoseCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,4 +38,17 @@ public class EscapeRecordService {
             return -1;
         }
     }
+
+    public List<EscapeRecord> listAsCustomerId(Integer custoemrId){
+        return escapeRecordMapper.selectAsCustomerId(custoemrId);
+    }
+
+    public List<EscapeRecord> listAsCreatorId(Integer creatorId){
+        return escapeRecordMapper.selectAsCreatorId(creatorId);
+    }
+
+    public List<LoseCount> countAsEscapeReason(){
+        return escapeRecordMapper.selectAsEscapeReason();
+    }
+
 }

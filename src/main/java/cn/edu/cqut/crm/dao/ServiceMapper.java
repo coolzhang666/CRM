@@ -25,4 +25,6 @@ public interface ServiceMapper {
     void changeServiceStatus(String ServiceStatus,int serviceId);
   
     void insert(Service service);
+
+    List<Service> getHandService(String serviceStatus);
 }

@@ -11,11 +11,13 @@ public interface OrderMapper {
 
     List<OrderStatistics> selectAll();
 
-    List<OrderStatistics> selectYear16();
+    List<Order> selectAllInfo();
 
-    List<OrderStatistics> selectYear17();
+    Double selectYear16Total();
 
-    List<OrderStatistics> selectYear18();
+    Double selectYear17Total();
 
-    List<OrderStatistics> selectYear19();
+    Double selectYear18Total();
+
+    Double selectYear19Total();
 }

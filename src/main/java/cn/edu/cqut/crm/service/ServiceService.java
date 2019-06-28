@@ -37,4 +37,9 @@ public class ServiceService {
     public void insertService(Service service){
         serviceMapper.insert(service);
     }
+
+    public List<Service> getHandService() {
+        String serviceStatus = "已处理";
+        return serviceMapper.getHandService(serviceStatus);
+    }
 }
