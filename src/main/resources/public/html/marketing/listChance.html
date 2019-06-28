@@ -79,8 +79,28 @@
 						<tr>
 							<td>指派人ID:</td>
 							<td>
-								<input id="send_belong" class="easyui-textbox" type="text" value="" name="belong" data-options="required:true">
-								</input>
+								<input id="send_belong" class="easyui-combobox" type="text" value="" name="belong" data-options="required:true">
+								<script>
+									$('#send_belong').combobox({
+										valueField: 'belong',
+										textField: 'belong',
+										panelHeight:150,
+										loader: listUserLoader
+									})
+
+									function listUserLoader(param, success, error) {
+										$.ajax({
+											type: 'GET',
+											url: 'http://localhost:8080/user',
+											success: function(re) {
+												var obj = re.data;
+												for(var i=0;i<obj.length;i++)
+													obj[i].belong = obj[i].userId;
+												success(obj)
+											}
+										})
+									}
+								</script>
 							</td>
 						</tr>
 						<tr>
