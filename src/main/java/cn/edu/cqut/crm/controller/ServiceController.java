@@ -89,4 +89,13 @@ public class ServiceController {
         serviceService.insertService(service);
         return ReturnUtil.success("新增成功",null);
     }
+
+    @RequestMapping(value = "/getHandService/{page}/{rows}",method = RequestMethod.GET)
+    private ReturnObject<Object> getHandService(@PathVariable() int page, @PathVariable() int rows) {
+        PageHelper.startPage(page, rows);
+        List<Service> services = serviceService.getHandService();
+        PageInfo<Service> pageInfo = new PageInfo<>(services);
+        long total = pageInfo.getTotal();
+        return ReturnUtil.success("查询成功", services, total);
+    }
 }

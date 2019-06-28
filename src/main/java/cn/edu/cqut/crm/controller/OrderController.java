@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
 public class OrderController {
@@ -36,43 +34,88 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orderName", method = RequestMethod.GET)
-    public Map<String,List> getOrderName(){
+    public Map<String, List> getOrderName(){
+        List<Order> list = orderService.getAllInfo();
         List<String> xlist = new ArrayList<>();
         List<Double> slist16 = new ArrayList<>();
         List<Double> slist17 = new ArrayList<>();
         List<Double> slist18 = new ArrayList<>();
         List<Double> slist19 = new ArrayList<>();
-
-        List<OrderStatistics> list16 = orderService.getYear16();
-        List<OrderStatistics> list17 = orderService.getYear17();
-        List<OrderStatistics> list18 = orderService.getYear18();
-        List<OrderStatistics> list19 = orderService.getYear19();
-
-        for (OrderStatistics o:list16){
-            xlist.add(o.getStatisticsCustomerName());
-            slist16.add(o.getStatisticsTotalPrice());
+        for(Order o:list){
+            if(!xlist.contains(o.getCustomerName())){
+                xlist.add(o.getCustomerName());
+            }
         }
-        for (OrderStatistics o:list17){
-            xlist.add(o.getStatisticsCustomerName());
-            slist17.add(o.getStatisticsTotalPrice());
+        Double d = 0.0;
+        for(int i=0;i<xlist.size();i++){
+            d = 0.0;
+            for(Order o:list){
+                if (o.getOrderTime().getYear()+1900==2016){
+                    if (o.getCustomerName().equals(xlist.get(i))){
+                        d+=o.getTotalPrice();
+                    }
+                }
+            }
+            slist16.add(d);
+            d=0.0;
+            for(Order o:list){
+                if (o.getOrderTime().getYear()+1900== 2017){
+                    if (o.getCustomerName().equals(xlist.get(i))){
+                        d+=o.getTotalPrice();
+                    }
+                }
+            }
+            slist17.add(d);
+            d=0.0;
+            for(Order o:list){
+                if (o.getOrderTime().getYear()+1900== 2018){
+                    if (o.getCustomerName().equals(xlist.get(i))){
+                        d+=o.getTotalPrice();
+                    }
+                }
+            }
+            slist18.add(d);
+            d=0.0;
+            for(Order o:list){
+                if (o.getOrderTime().getYear()+1900== 2019){
+                    if (o.getCustomerName().equals(xlist.get(i))){
+                        d+=o.getTotalPrice();
+                    }
+                }
+            }
+            slist19.add(d);
         }
-        for (OrderStatistics o:list18){
-            xlist.add(o.getStatisticsCustomerName());
-            slist18.add(o.getStatisticsTotalPrice());
-        }
-        for (OrderStatistics o:list19){
-            xlist.add(o.getStatisticsCustomerName());
-            slist19.add(o.getStatisticsTotalPrice());
-        }
-
-//        System.out.println("xlist"+xlist);
-//        System.out.println("slist"+slist16);
         Map<String,List> map = new HashMap<>();
         map.put("xlist",xlist);
         map.put("slist16",slist16);
         map.put("slist17",slist17);
         map.put("slist18",slist18);
         map.put("slist19",slist19);
+        return map;
+    }
+
+    @RequestMapping(value = "/orderYear", method = RequestMethod.GET)
+    public Map<String,List> getOrderYear(){
+        List<String> xlist = new ArrayList<>();
+        xlist.add("2016");
+        xlist.add("2017");
+        xlist.add("2018");
+        xlist.add("2019");
+
+        Double year16 = orderService.getYear16Total();
+        Double year17 = orderService.getYear17Total();
+        Double year18 = orderService.getYear18Total();
+        Double year19 = orderService.getYear19Total();
+
+        List<Double> slist = new ArrayList<>();
+        slist.add(year16);
+        slist.add(year17);
+        slist.add(year18);
+        slist.add(year19);
+
+        Map<String,List> map = new HashMap<>();
+        map.put("xlist",xlist);
+        map.put("slist",slist);
         return map;
     }
 }

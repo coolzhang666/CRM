@@ -17,11 +17,18 @@ public class OrderService {
         return orderMapper.selectAll();
     }
 
-    public List<OrderStatistics> getYear16(){ return orderMapper.selectYear16();}
+    public List<Order> getAllInfo(){ return orderMapper.selectAllInfo();}
 
-    public List<OrderStatistics> getYear17(){ return orderMapper.selectYear17();}
-
-    public List<OrderStatistics> getYear18(){ return orderMapper.selectYear18();}
-
-    public List<OrderStatistics> getYear19(){ return orderMapper.selectYear19();}
+    public Double getYear16Total() {
+        return orderMapper.selectYear16Total();
+    }
+    public Double getYear17Total() {
+        return orderMapper.selectYear17Total();
+    }
+    public Double getYear18Total() {
+        return orderMapper.selectYear18Total();
+    }
+    public Double getYear19Total() {
+        return orderMapper.selectYear19Total();
+    }
 }

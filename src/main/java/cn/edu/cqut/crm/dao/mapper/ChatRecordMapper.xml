@@ -41,7 +41,7 @@
         create_time=#{createTime},
         chat_address=#{chatAddress},
         more_info=#{moreInfo}
-        where customer_id=#{customerId}
+        where chat_id=#{chatId}
     </update>
 
     <insert id="insert" parameterType="cn.edu.cqut.crm.model.ChatRecord">

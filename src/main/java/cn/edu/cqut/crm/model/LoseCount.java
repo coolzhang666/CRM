@@ -4,11 +4,11 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LoseCount {
-    
-   
+
+
     @JSONField(name = "totalNum")
     private int totalNum;
-    
+
     @JSONField(name = "type")
     private String type;
 

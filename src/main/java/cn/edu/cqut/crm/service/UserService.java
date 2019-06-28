@@ -13,4 +13,8 @@ public class UserService {
     public User getUserById(Integer userId) {
         return userMapper.selectById(userId);
     }
+
+    public User getUserByNo(String userNo) {
+        return userMapper.selectByNo(userNo);
+    }
 }

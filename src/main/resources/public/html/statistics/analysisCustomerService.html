@@ -1,0 +1,107 @@
+<div style="margin-left: 30px;margin-top: 20px;">
+	输入年份:<input id="getTime" type="text" />
+	<button onclick="submitTime()">提交</button>
+	<button onclick="changCount()">取消</button>
+</div>
+<center style="padding-top: 40px;">
+	<div  id="ServiceStatic" style="width: 600px;height:400px;padding: 10px;"></div>
+	<div hidden="hidden" id="DateStatic" style="width: 600px;height:400px;padding: 10px;"></div>
+
+</center>
+
+<script type="text/javascript">
+	// 基于准备好的dom，初始化echarts实例
+	var ServiceSta = echarts.init(document.getElementById('ServiceStatic'));
+	ServiceSta.setOption({
+		title: {
+			text: '客户服务统计'
+		},
+		tooltip: {},
+
+		xAxis: {
+			data: []
+		},
+		yAxis: {},
+		series: [{
+			name: '客户服务统计',
+			type: 'bar',
+			data: []
+		}]
+	});
+	$.ajax({
+		type: "GET",
+		url: "http://localhost:8080/getServiceCount",
+		success: function(data) {
+			//采用map类型来取值:data.map.a/data.map.b
+			// a=data.data.xlist
+			// b=data.data.slist
+			console.log(data)
+			ServiceSta.setOption({
+				xAxis: {
+					data: data.data.type
+				},
+				series: [{
+					// 根据名字对应到相应的系列
+					name: '客户服务统计',
+					data: data.data.count
+				}]
+			});
+		}
+	});
+	var dateStatic = echarts.init(document.getElementById('DateStatic'));
+	dateStatic.setOption({
+		title: {
+			text: '客户服务统计'
+		},
+		tooltip: {},
+	
+		xAxis: {
+			data: []
+		},
+		yAxis: {},
+		series: [{
+			name: '客户服务统计',
+			type: 'bar',
+			data: []
+		}]
+	});
+	function submitTime() {
+		var create_time = document.getElementById("getTime").value;
+		if(create_time != null || create_time != "") {
+			var serviceSta = document.getElementById("ServiceStatic");
+			var dateSta = document.getElementById("DateStatic");
+			serviceSta.style.display = "none";
+			dateSta.style.display = "inline";
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:8080/getDateCount/"+create_time,
+				success: function(data) {
+					//采用map类型来取值:data.map.a/data.map.b
+					// a=data.data.xlist
+					// b=data.data.slist
+					console.log(data)
+					dateStatic.setOption({
+						xAxis: {
+							data: data.data.type
+						},
+						series: [{
+							// 根据名字对应到相应的系列
+							name: '客户服务统计',
+							data: data.data.count
+						}]
+					});
+				}
+			});
+		} else {
+			$.messager.alert("错误提示", "输入正确的年份");
+		}
+	}
+	
+	 function changCount() {
+		 var serviceSta = document.getElementById("ServiceStatic");
+		 var dateSta = document.getElementById("DateStatic");
+		 serviceSta.style.display = "inline";
+		 dateSta.style.display = "none";
+		 document.getElementById("getTime").value = "";
+	 }
+</script>

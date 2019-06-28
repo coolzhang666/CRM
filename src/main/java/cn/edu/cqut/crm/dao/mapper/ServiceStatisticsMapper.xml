@@ -6,4 +6,11 @@
     <select id="getServiceType" resultType="cn.edu.cqut.crm.model.ServiceStatistics">
         select service_type as 'serviceType' ,count(*) as 'countService' from service group by service_type
     </select>
+
+    <select id="getDateCount" resultType="cn.edu.cqut.crm.model.ServiceStatistics">
+        SELECT service_type as 'serviceType' ,count(*) as 'countService'
+        from service
+        where year(create_time)=#{create_time}
+        GROUP BY service_type
+    </select>
 </mapper>
