@@ -5,6 +5,8 @@ import cn.edu.cqut.crm.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -23,4 +25,6 @@ public class UserService {
         user.setUserStatus("正常");
         return userMapper.insert(user);
     }
+
+    public List<User> listUserByRole(){return userMapper.selectByRole();}
 }

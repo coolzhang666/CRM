@@ -28,4 +28,8 @@
         insert into user(user_no, user_name, user_gender, user_phone, user_email, user_address, user_password, user_role, user_status)
         values(#{userNo}, #{userName}, #{userGender}, #{userPhone}, #{userEmail}, #{userAddress}, #{userPassword}, #{userRole}, #{userStatus})
     </insert>
+    
+    <select id="selectByRole" resultMap="UserResultMap">
+        select * from user where user_role = '客户经理'
+    </select>
 </mapper>

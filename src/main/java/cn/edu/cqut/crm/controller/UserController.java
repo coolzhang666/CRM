@@ -78,4 +78,9 @@ public class UserController {
             return ReturnUtil.fail("您还未登录", null);
         }
     }
+
+    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    public ReturnObject<Object> listUserByRole(){
+        return ReturnUtil.success(userService.listUserByRole());
+    }
 }
