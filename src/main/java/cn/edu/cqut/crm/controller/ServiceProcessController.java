@@ -23,4 +23,11 @@ public class ServiceProcessController {
         serviceProcessService.addServiceProcess(serviceId,handlerId,handlerName,customerId,handMethod,handResult,customerSatisfaction);
         return ReturnUtil.success("处理成功",null);
     }
+
+    @RequestMapping(value = "feedBackService/{serviceId}/{customerSatisfaction}/{handResult}",method = RequestMethod.PUT)
+    public ReturnObject<Object> feedBackService(@PathVariable() int serviceId,
+                                                @PathVariable()String customerSatisfaction,@PathVariable() String handResult) {
+        serviceProcessService.feedBackService(serviceId,customerSatisfaction,handResult);
+        return  ReturnUtil.success("反馈成功",null);
+    }
 }
