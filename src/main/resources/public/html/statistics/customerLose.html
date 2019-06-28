@@ -1,0 +1,74 @@
+<center style="padding-top: 20px;">
+	<!-- 顶部工具栏 -->
+	<!-- <input class="easyui-searchbox" data-options="prompt:'Please Input Value',menu:'#mm',searcher:doSearch" style="width:300px"></input>
+	<div id="mm">
+		<div data-options="name:'all',iconCls:'icon-ok'">All News</div>
+		<div data-options="name:'sports'">Sports News</div>
+	</div> -->
+
+
+	<!-- 流失原因分析 -->
+	<!-- 	<div id="loseReson">
+		
+	</div> -->
+
+
+	<!-- 流失情况统计表（table） -->
+	<!-- <div id="loseTabel">
+		
+	</div> -->
+	<div id="main" style="width: 600px;height:400px;padding: 10px;"></div>
+
+
+</center>
+
+<script type="text/javascript">
+	// 基于准备好的dom，初始化echarts实例
+	var myChart = echarts.init(document.getElementById('main'));
+	
+	myChart.setOption({
+		title: {
+			text: '流失原因统计'
+		},
+		tooltip: {},
+		
+		xAxis: {
+			data: []
+		},
+		yAxis: {},
+		series: [{
+			name: '流失原因统计',
+			type: 'bar',
+			data: []
+		}]
+	});
+
+	$.ajax({
+		type: "GET",
+		url: "http://localhost:8080/escapeRecord/escapeReason",
+		success: function(data) {
+			//采用map类型来取值:data.map.a/data.map.b
+			// a=data.data.xlist
+			// b=data.data.slist
+			var map = data.data;
+		
+			var a = map.xlist;
+			var b = map.slist;
+			myChart.setOption({
+				xAxis: {
+					data: a
+				},
+				series: [{
+					// 根据名字对应到相应的系列
+					name: '流失原因统计',
+					data: b
+				}]
+			});
+		}
+	});
+
+
+	function doSearch(value, name) {
+		alert('You input: ' + value + '(' + name + ')');
+	}
+</script>
