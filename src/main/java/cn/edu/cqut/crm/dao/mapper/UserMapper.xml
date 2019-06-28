@@ -19,4 +19,8 @@
     <select id="selectById" resultMap="UserResultMap" parameterType="java.lang.Integer">
         select * from user where user_id = #{userId}
     </select>
+
+    <select id="selectByNo" resultMap="UserResultMap" parameterType="java.lang.String">
+        select * from user where user_no = #{userNo}
+    </select>
 </mapper>

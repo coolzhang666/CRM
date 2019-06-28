@@ -51,4 +51,11 @@
         service(service_type,creator_id,creator_name,customer_id,customer_name,create_time,service_status)
         values(#{serviceType},#{creatorId},#{creatorName},#{customerId},#{customerName},#{createTime},#{serviceStatus})
     </insert>
+
+    <select id="getHandService" resultMap="ServiceResultMap">
+        select service_id,service_type,customer_id,customer_name,service_status,hand_time
+        from service
+        where service_status=#{serviceStatus}
+        order by dispatch_time
+    </select>
 </mapper>
