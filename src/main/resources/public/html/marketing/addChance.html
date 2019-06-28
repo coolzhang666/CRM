@@ -7,7 +7,18 @@
 					<tr>
 						<td>客户姓名:</td>
 						<td>
-							<input class="easyui-textbox" type="text" name="customerName" data-options="required:true" style="width: 170px;"></input>
+							<input class="easyui-validatebox" id="customerName" name="customerName" data-options="required:true" style="height: 28px;width:168px;position: relative;
+												  border: 1px solid #95B8E7;
+												  background-color: #fff;
+												  vertical-align: middle;
+												  display: inline-block;
+												  overflow: hidden;
+												  white-space: nowrap;
+												  margin: 0;
+												  padding: 0;
+												  -moz-border-radius: 5px 5px 5px 5px;
+												  -webkit-border-radius: 5px 5px 5px 5px;
+												  border-radius: 5px 5px 5px 5px;"  style="width: 170px;"></input>
 						</td>
 					</tr>
 					<tr>
@@ -42,12 +53,12 @@
 					</tr>
 					<tr>
 						<td>创建人Id:</td>
-						<td><input class="easyui-textbox" type="text" name="creatorId" data-options="required:true" style="width: 170px;"></input>
+						<td><input  class="easyui-textbox" type="text" id="creatorId" value="" name="creatorId" data-options="required:false,disabled:true" style="width: 170px;"></input>
 						</td>
 					</tr>
 					<tr>
 						<td>创建人姓名:</td>
-						<td><input class="easyui-textbox" type="text" name="creatorName" data-options="required:true" style="width: 170px;"></input>
+						<td><input  class="easyui-textbox" type="text" id="creatorName" value="" name="creatorName" data-options="required:false,disabled:true" style="width: 170px;"></input>
 						</td>
 					</tr>
 					<tr>
@@ -82,6 +93,20 @@
 </center>
 <script type="text/javascript">
 	$(document).ready(function() {
+		// alert(loginObj);
+		$("#customerName").blur(function() {
+			var value = $('#customerName').val();
+			//		alert(value);    
+			if (value != "") { //当文本框的值value不为空时，执行的操作
+				$("#creatorId").textbox('enable');
+				$("#creatorName").textbox('enable');
+				$("#creatorId").textbox('setValue',loginObj.userId);
+				$("#creatorName").textbox('setValue',loginObj.userName);
+				$("#creatorId").textbox('disable');
+				$("#creatorName").textbox('disable');
+
+			}
+		})
 		$("#belong").blur(function() {
 			setText();
 		})
@@ -104,6 +129,8 @@
 	function submitForm() {
 		var boo = $('#ff').form('validate');
 		$("#chanceStatus").textbox('enable');
+		$("#creatorId").textbox('enable');
+		$("#creatorName").textbox('enable');
 		if (boo) {
 			$.ajax({
 				type: 'post', //提交方式

@@ -1,34 +1,71 @@
 <div>
-	<table id="allfeedBack" class="easyui-datagrid" style="width:100%;height:500px;" toolbar="#toolBarFeedVack"
-	 data-options="pagination:true,singleSelect:true,collapsible:false,loader:feedBackloader,
+    <table id="listFeedBack" class="easyui-datagrid" style="width:100%;height:500px;" toolbar="#toolBarFeedVack"
+           data-options="pagination:true,singleSelect:true,collapsible:false,loader:feedBackloader,
 		method:'get',fitColumns:true, nowrap:true,pageList:[5,10,15,20],pageSize:5,displayMsg:''">
-		<thead>
-			<tr>
-				<th data-options="field:'serviceId',width:80,align:'center',resizable:false">服务编号</th>
-				<th data-options="field:'serviceType',width:100, align:'center',resizable:false">服务类型</th>
-				<th data-options="field:'customerId',width:100,align:'center',resizable:false">客户编号</th>
-				<th data-options="field:'customerName',width:80,align:'center',resizable:false">客户姓名</th>
-				<th data-options="field:'handTime',width:80, align:'center',resizable:false">处理时间</th>
-				<th data-options="field:'serviceStatus',width:60,align:'center',resizable:false">状态</th>
-			</tr>
-		</thead>
-	</table>
-	<!-- 要处理的服务信息的菜单栏 -->
-	<div id="toolBarFeedVack" style="height:auto">
-		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="handlerCustomerService()">处理</a>
-	</div>
+        <thead>
+        <tr>
+            <th data-options="field:'serviceId',width:80,align:'center',resizable:false">服务编号</th>
+            <th data-options="field:'serviceType',width:100, align:'center',resizable:false">服务类型</th>
+            <th data-options="field:'customerId',width:100,align:'center',resizable:false">客户编号</th>
+            <th data-options="field:'customerName',width:80,align:'center',resizable:false">客户姓名</th>
+            <th data-options="field:'createTime',width:80, align:'center',resizable:false">处理时间</th>
+            <th data-options="field:'serviceStatus',width:60,align:'center',resizable:false">状态</th>
+        </tr>
+        </thead>
+    </table>
+    <!-- 要处理的服务信息的菜单栏 -->
+    <div id="toolBarFeedVack" style="height:auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true"
+           onclick="feedBackService()">反馈</a>
+    </div>
+</div>
+<div id="feedBackMessage" title="反馈信息" class="easyui-dialog" data-options="closed:true">
+    <select panelHeight="auto" class="easyui-combobox" id="message" data-options="width:172,required:true">
+        <option value="4">较好</option>
+        <option value="1">差</option>
+        <option value="2">良</option>
+        <option value="3">中</option>
+        <option value="5">很好</option>
+    </select>
+    <button onclick="submitFeed()">提交</button>
+    <button onclick="changFeed()">取消</button>
 </div>
 <script>
-	var feedBackloader = function(param, success, error) {
-		$.ajax({
-			type: "GET",
-			url: "http://localhost:8080/getHandService/" + param.page + "/" + param.rows ,
-			success: function(data) {
-				var obj = {};
-				obj.total = data.total;
-				obj.rows = data.data;
-				success(obj);
-			}
-		});
-	}
+    var feedBackloader = function (param, success, error) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/getHandService/" + param.page + "/" + param.rows,
+            success: function (data) {
+                var obj = {};
+                obj.total = data.total;
+                obj.rows = data.data;
+                success(obj);
+            }
+        });
+    }
+
+    function feedBackService() {
+        var feedBack = $("#listFeedBack").datagrid("getSelected");
+        if (feedBack) {
+            $("#feedBackMessage").dialog("open");
+        } else {
+            $.messager.alert("提示", "请选中相应行");
+        }
+    }
+    function submitFeed() {
+        $("#feedBackMessage").dialog("close");
+        var feedBack = $("#listFeedBack").datagrid("getSelected");
+        var optionMessage = $("#message option:selected");
+        $.ajax({
+            type: 'put',
+            url: 'http://localhost:8080/feedBackService/' + feedBack.serviceId+ "/" +optionMessage.val()+ "/" +optionMessage.text(),
+            success: function (re) {
+                $("#listFeedBack").datagrid("reload");
+                $.messager.alert("提示", re.msg);
+            }
+        });
+    }
+    function changFeed() {
+        $("#feedBackMessage").dialog("close");
+    }
 </script>

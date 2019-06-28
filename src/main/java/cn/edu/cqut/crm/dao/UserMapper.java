@@ -11,5 +11,7 @@ public interface UserMapper {
 
     User selectByNo(String userNo);
 
+    Integer insert(User user);
+
     List<User> selectByRole();
 }

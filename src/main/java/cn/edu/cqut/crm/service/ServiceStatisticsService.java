@@ -1,5 +1,6 @@
 package cn.edu.cqut.crm.service;
 
+import cn.edu.cqut.crm.dao.ServiceMapper;
 import cn.edu.cqut.crm.dao.ServiceStatisticsMapper;
 import cn.edu.cqut.crm.model.ServiceStatistics;
 import cn.edu.cqut.crm.util.ReturnObject;
@@ -16,6 +17,9 @@ import java.util.Map;
 public class ServiceStatisticsService {
     @Autowired
     private ServiceStatisticsMapper serviceStatisticsMapper;
+
+    @Autowired
+    private ServiceMapper serviceMapper;
 
 
     public Map<String ,List<String>> getServiceType() {
