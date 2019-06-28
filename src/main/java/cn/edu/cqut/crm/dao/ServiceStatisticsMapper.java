@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface ServiceStatisticsMapper {
     List<ServiceStatistics> getServiceType();
+
+    List<ServiceStatistics> getDateCount(String create_time);
 }
